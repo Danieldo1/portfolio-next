@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import gsap from "gsap";
+import React, { useEffect, useRef } from "react";
 
 const HouseIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon-house">
@@ -53,17 +55,65 @@ export const navData = [
 
 const Nav = () => {
   const pathname = usePathname();
+  const navRef = useRef(null);
+  const linksRef = useRef([]);
+
+  useEffect(() => {
+    const navElement = navRef.current;
+    const linkElements = linksRef.current;
+
+    // Initial animation for the navbar
+    gsap.fromTo(navElement, 
+      { opacity: 0 },
+      { opacity: 1, duration: 1, ease: "power3.out" }
+    );
+
+    // Staggered animation for nav items
+    gsap.fromTo(linkElements, 
+      { opacity: 0, y: 20 },
+      { 
+        opacity: 1, 
+        y: 0, 
+        duration: 0.5, 
+        stagger: 0.1, 
+        ease: "power2.out",
+        delay: 0.5
+      }
+    );
+
+    // Hover animations for nav items
+    linkElements.forEach((link) => {
+      gsap.set(link, { transformOrigin: "center center" });
+      
+      link.addEventListener("mouseenter", () => {
+        gsap.to(link, {
+          scale: 1.1,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      });
+
+      link.addEventListener("mouseleave", () => {
+        gsap.to(link, {
+          scale: 1,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      });
+    });
+  }, []);
 
   return (
-    <nav className="flex flex-col items-center xl:justify-center gap-y-4 fixed h-max bottom-0 mt-auto xl:right-[2%] z-50 top-0 w-full xl:w-16 xl:max-w-md xl:h-screen">
-      <div className="flex w-full xl:flex-col items-center justify-between xl:justify-center gap-y-10 px-4 md:px-40 xl:px-0 h-[80px] xl:h-max py-8 bg-white/10 backdrop-blur-sm text-3xl xl:text-xl xl:rounded-full">
+    <nav ref={navRef} className="flex flex-shrink-0 flex-col items-center xl:justify-center gap-y-4 fixed h-max bottom-0 mt-auto xl:right-[2%] z-40 top-0 w-full xl:w-16 xl:max-w-md xl:h-screen">
+      <div className="flex w-full xl:flex-col items-center justify-between xl:justify-center gap-y-10 px-4 md:px-40 xl:px-0 h-[80px] xl:h-max py-8 bg-white/10 backdrop-blur-sm text-3xl xl:text-xl xl:rounded-full border-[0.5px] border-accent">
         {navData.map((link, i) => (
           <Link
             className={`${
               link.path === pathname && "text-accent"
             } nav-link relative flex items-center group hover:text-accent transition-all duration-300`}
             href={link.path}
-            key={i}
+            key={link.name + i}
+            ref={(el) => (linksRef.current[i] = el)}
           >
             {/* tooltip */}
             <div

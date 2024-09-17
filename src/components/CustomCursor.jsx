@@ -13,7 +13,12 @@ const CustomCursor = () => {
 
     const checkPointer = () => {
       const target = document.elementFromPoint(mousePosition.x, mousePosition.y);
-      setIsPointer(window.getComputedStyle(target).cursor === 'pointer');
+      if (target) {
+        const computedStyle = window.getComputedStyle(target);
+        setIsPointer(computedStyle.cursor === 'pointer');
+      } else {
+        setIsPointer(false);
+      }
     };
 
     window.addEventListener('mousemove', mouseMove);
@@ -45,9 +50,9 @@ const CustomCursor = () => {
       variants={variants}
       transition={{ type: 'spring', stiffness: 500, damping: 28 }}
     >
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="16" cy="16" r="8" fill="gray" />
-        <circle cx="16" cy="16" r="16" stroke="gray" strokeWidth="1" />
+      <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="8" fill="#925eff" />
+        
       </svg>
     </motion.div>
   );

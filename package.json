@@ -16,7 +16,11 @@
     "mongoose": "^8.6.2",
     "next": "14.2.11",
     "react": "^18",
-    "react-dom": "^18"
+    "react-countup": "^6.5.3",
+    "react-dom": "^18",
+    "swipeable-react": "^2.0.0",
+    "swiper": "^11.1.14",
+    "tailwind-scrollbar-hide": "^1.1.7"
   },
   "devDependencies": {
     "eslint": "^8",

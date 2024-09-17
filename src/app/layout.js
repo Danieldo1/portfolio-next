@@ -23,16 +23,21 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    // supressHydration
-    <html lang="en" suppressHydrationWarning={true} >
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-pink-100 page bg-site text-black bg-cover bg-no-repeat relative`}
-      >
+    <html lang="en" suppressHydrationWarning={true}>
+    <body
+      className={`${geistSans.variable} ${geistMono.variable} grid-main antialiased bg-pink-100 text-black`}
+    >
       <CustomCursor />
-        <Header />
+      <div className="flex flex-col min-h-screen">
+        <Header className="" />
+        <main className="flex-grow overflow-y-auto">
+          <div className="container mx-auto px-4 py-8">
+            {children}
+          </div>
+        </main>
         <Navbar />
-        <div className='absolute top-40 left-5 w-full h-full'>{children}</div>
-      </body>
-    </html>
+      </div>
+    </body>
+  </html>
   );
 }

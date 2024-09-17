@@ -2,9 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  cursor: none !important;
-}
+
 
 @layer base {
   body {
@@ -82,4 +80,40 @@
 @keyframes mailOpen {
   0%, 100% { transform: scaleY(1); }
   50% { transform: scaleY(0.8); }
+}
+
+.grid-main {
+  width: 100%;
+  height: 100%;
+  --color: rgba(114, 114, 114, 0.3);
+  /* background-color: rgba(114, 114, 114, 0.); */
+  background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent),
+      linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent);
+  background-size: 25px 25px;
+}
+
+@keyframes slowSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.slow-spin {
+  animation: slowSpin 20s linear infinite;
+}
+
+.spin-container:hover .slow-spin {
+  animation-play-state: paused;
+}
+
+/* Ensure the icon doesn't spin */
+.spin-container:hover .icon {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #925eff !important;
 }
