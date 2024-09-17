@@ -2,26 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  cursor: none !important;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-secondary overflow-hidden leading-relaxed;
   }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .page {
+    @apply w-full h-screen overflow-hidden;
   }
+  
+}
+.translate-z-0 {
+  transform: translateZ(0px);
+}
+
+.icon-house:hover path {
+  animation: houseGrow 0.6s ease-in-out;
+}
+
+.icon-user:hover circle {
+  animation: userWave 0.6s ease-in-out;
+}
+
+.icon-dashboard:hover rect {
+  animation: dashboardSlide 0.6s ease-in-out;
+}
+
+.icon-layout:hover > :first-child {
+  animation: layoutExpand 0.6s ease-in-out;
+}
+
+.icon-mail:hover > :first-child {
+  animation: mailOpen 0.6s ease-in-out;
+}
+
+.nav-link:hover .icon-house path {
+  animation: houseGrow 0.6s ease-in-out;
+}
+
+.nav-link:hover .icon-user circle {
+  animation: userWave 0.6s ease-in-out;
+}
+
+.nav-link:hover .icon-dashboard rect {
+  animation: dashboardSlide 0.6s ease-in-out;
+}
+
+.nav-link:hover .icon-layout > :first-child {
+  animation: layoutExpand 0.6s ease-in-out;
+}
+
+.nav-link:hover .icon-mail > :first-child {
+  animation: mailOpen 0.6s ease-in-out;
+}
+
+@keyframes houseGrow {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes userWave {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-3px) rotate(10deg); }
+}
+
+@keyframes dashboardSlide {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(3px); }
+}
+
+@keyframes layoutExpand {
+  0%, 100% { transform: scale(1, 1); }
+  50% { transform: scale(1.1, 0.9); }
+}
+
+@keyframes mailOpen {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.8); }
 }

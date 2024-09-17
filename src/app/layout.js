@@ -1,6 +1,10 @@
 import localFont from "next/font/local";
 import "./globals.css";
 
+import Navbar from "../components/Navbar";
+import Header from "@/components/Header";
+import CustomCursor from "@/components/CustomCursor";
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -19,11 +23,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    // supressHydration
+    <html lang="en" suppressHydrationWarning={true} >
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-pink-100 page bg-site text-black bg-cover bg-no-repeat relative`}
       >
-        {children}
+      <CustomCursor />
+        <Header />
+        <Navbar />
+        <div className='absolute top-40 left-5 w-full h-full'>{children}</div>
       </body>
     </html>
   );
