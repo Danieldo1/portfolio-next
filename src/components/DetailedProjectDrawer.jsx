@@ -83,8 +83,9 @@ const DetailedProjectDrawer = ({ project }) => {
             />
           </motion.div>
           <div
-            className={`grid grid-cols-${project.images.length} md:grid-8 gap-2 md:gap-4 justify-items-center w-full z-0`}
+            className={`grid grid-cols-${project?.images?.length || 5 } gap-2 md:gap-4 justify-items-center w-full z-0`}
           >
+            
             {project.images.map((image, index) => (
               <motion.div
                 whileHover={{ scale: 1.1 }}

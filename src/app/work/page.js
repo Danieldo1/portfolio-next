@@ -9,6 +9,7 @@ import Link from "next/link";
 import CustomButton from "@/components/CustomButton";
 import { Drawer } from "vaul";
 import DetailedProjectDrawer from "@/components/DetailedProjectDrawer";
+import AnimatedTitle from "@/components/AnimatedTitle";
 
 const ProjectPage = () => {
   const [projects, setProjects] = useState([]);
@@ -74,9 +75,7 @@ const ProjectPage = () => {
   return (
     <PageTransitionWrapper>
       <div className="flex flex-col min-h-[80vh] overflow-scroll">
-        <h1 className="text-3xl md:text-5xl font-bold text-center mb-2 md:mb-4 text-gray-800">
-          Creative <span className="text-accent font-normal">Visions</span>
-        </h1>
+       <AnimatedTitle leftWord="Creative" rightWord="visions" />
 
         <main className="flex-grow flex items-center justify-center z-10 relative ">
           <button
@@ -118,10 +117,11 @@ const ProjectPage = () => {
                         alt={project.name}
                         className="w-full h-64 md:h-full object-cover"
                       />
+                         {/* Divider gradient */}
                       <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-transparent via-white/10 to-white opacity-60" />
                     </div>
-                    {/* Divider */}
-                    {/* <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full z-10" /> */}
+                 
+                    
                     {/* Text and button container */}
                     <div className="relative p-6 md:w-1/2 flex flex-col justify-center bg-white/50 backdrop-blur-md">
                       <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-accent to-emerald-400">
@@ -182,9 +182,6 @@ const ProjectPage = () => {
         </footer>
       </div>
 
-      {/* <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen} className='overflow-auto'>
-        <DetailedProjectDrawer project={selectedProject} />
-      </Drawer> */}
     </PageTransitionWrapper>
   );
 };

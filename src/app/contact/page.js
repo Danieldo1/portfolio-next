@@ -55,7 +55,7 @@ const ContactPage = () => {
         duration: 0.5,
         type: "spring",
         stiffness: 300,
-        delay: 1.2,
+        // delay: 1.2,
       },
     },
   };
@@ -65,9 +65,10 @@ const ContactPage = () => {
     visible: {
       opacity: 1,
       transition: {
+        delayChildren: 1,
         staggerChildren: 0.2,
-        duration: 0.5,
-        delay: 1.2,
+        duration: 1,
+        delay: 1.1,
       },
     },
   };

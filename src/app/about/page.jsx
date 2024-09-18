@@ -8,6 +8,7 @@ import SkillsSlider from "@/components/SkillsSlider";
 import { DraftingCompass, Languages, Laptop, Router } from "lucide-react";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import AnimatedTitle from "@/components/AnimatedTitle";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -116,10 +117,8 @@ const AboutPage = () => {
           </div>
         </div>
 
-        <div ref={skillsRef} className="mt-12">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-2 text-gray-800">
-            My <span className="text-accent font-normal">skills</span>
-          </h2>
+          <AnimatedTitle leftWord="My" rightWord="skills" />
+        <div ref={skillsRef} className="-mt-10">
           <SkillsSlider skills={skillsData} />
         </div>
       </div>
