@@ -50,13 +50,35 @@ const ProjectPage = () => {
     setSelectedProject(project);
   };
 
+  const projectVariants = {
+    enter: { opacity: 0, scale: 0.95 },
+    center: { opacity: 1, scale: 1 },
+    exit: { opacity: 0, scale: 1.05 },
+  };
+
+  const slideVariants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction) => ({
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0,
+    }),
+  }
+
   return (
     <PageTransitionWrapper>
-      <div>
+      <div className="flex flex-col min-h-[80vh] overflow-scroll">
         <h1 className="text-3xl md:text-5xl font-bold text-center mb-2 md:mb-4 text-gray-800">
           Creative <span className="text-accent font-normal">Visions</span>
         </h1>
-        <main className="flex-grow flex items-center justify-center relative z-10">
+
+        <main className="flex-grow flex items-center justify-center z-10 relative ">
           <button
             onClick={prevProject}
             className="absolute -left-3 xl:left-20 z-20 p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors transform hover:scale-110"
@@ -65,17 +87,20 @@ const ProjectPage = () => {
             <ChevronLeftIcon className="w-8 h-8" />
           </button>
 
-          <AnimatePresence custom={direction}>
+          <AnimatePresence initial={false} custom={direction}>
             <motion.div
               key={currentIndex}
               custom={direction}
-              initial={{ opacity: 0, x: 300 * direction }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -300 * direction }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="w-full max-w-4xl p-8"
+              variants={slideVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{
+                x: { type: "spring", stiffness: 300, damping: 30 },
+                opacity: { duration: 0.2 }
+              }}
+              className="w-full max-w-4xl p-8 absolute"
             >
-              {/* Map over the projects array using commented out styles*/}
               {isLoading ? (
                 <ProjectSkeletonLoader />
               ) : (
@@ -111,7 +136,7 @@ const ProjectPage = () => {
                         <Drawer.Portal>
                           <Drawer.Overlay className="fixed inset-0 bg-black/50 " />
                           <Drawer.Content className="bg-white flex flex-col z-[100] fixed bottom-0 left-0 right-0 max-h-[93%] rounded-t-[10px] shadow-[0px_-10px_15px_5px_#3C3B3B69]">
-                            <div className='w-[30%] h-2 bg-slate-400 rounded-xl mx-auto my-3 cursor-grabbing' />
+                            <div className="w-[30%] h-2 bg-slate-400 rounded-xl mx-auto my-3 cursor-grabbing" />
                             <div className=" w-full  mx-auto flex flex-col overflow-auto p-4 rounded-t-[10px] scrollbar-hide">
                               <DetailedProjectDrawer
                                 project={selectedProject}
@@ -136,7 +161,7 @@ const ProjectPage = () => {
           </button>
         </main>
 
-        <footer className="p-6 flex justify-center items-center z-10">
+        <footer className="p-6 justify-center mt-10 items-center z-10 hidden lg:flex">
           <div className="flex space-x-3">
             {projects.map((_, index) => (
               <button
