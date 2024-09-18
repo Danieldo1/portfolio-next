@@ -10,6 +10,7 @@
     "seed": "node scripts/seedProjects.js"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@radix-ui/react-slot": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -24,6 +25,7 @@
     "react": "^18",
     "react-countup": "^6.5.3",
     "react-dom": "^18",
+    "react-hot-toast": "^2.4.1",
     "swipeable-react": "^2.0.0",
     "swiper": "^11.1.14",
     "tailwind-merge": "^2.5.2",

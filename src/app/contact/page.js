@@ -1,99 +1,313 @@
-'use client'
-import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
-import PageTransitionWrapper from '../PageTransitionWrapper'
-import gsap from 'gsap';
+"use client";
+import React, { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import PageTransitionWrapper from "../PageTransitionWrapper";
+import {
+  Mail,
+  MailIcon,
+  MapPin,
+  PenLine,
+  SendHorizonal,
+  User2,
+} from "lucide-react";
+import emailjs from "@emailjs/browser";
+import toast from "react-hot-toast";
 
 const ContactPage = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: ''
-      });
-      const formRef = useRef(null);
-      const nameInputRef = useRef(null);
-      const emailInputRef = useRef(null);
-      const messageInputRef = useRef(null);
-      const buttonRef = useRef(null);
-      
+  const formRef = useRef();
+  const [sent, setSent] = useState(false);
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
-      const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-      };
-    
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        // add sumbit logic
-        console.log('Form submitted:', formData);
-      };
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 1,
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const inputVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 1.2,
+        staggerChildren: 0.5,
+      },
+    },
+  };
+
+  const buttonVariants = {
+    hidden: { scale: 0.5, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        type: "spring",
+        stiffness: 300,
+        delay: 1.2,
+      },
+    },
+  };
+
+  const containerBtnVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        duration: 0.5,
+        delay: 1.2,
+      },
+    },
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setForm({ ...form, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSent(true);
+    emailjs
+      .send(
+        "service_sde995g",
+        "template_1y5lt3p",
+        {
+          from_name: form.name,
+          to_name: "Daniil",
+          from_email: form.email,
+          to_email: "daniel.speranskiy@gmail.com",
+          message: form.message,
+        },
+        "7yFNjLLKOxxB4Osr4"
+      )
+      .then(
+        () => {
+          setSent(false);
+          toast.success("Thank you, I will get back to you as soon as possible!");
+          setForm({
+            name: "",
+            email: "",
+            message: "",
+          });
+        },
+        (error) => {
+          setSent(false);
+          console.log(error);
+          toast.error("Something went wrong, please try again later!");
+        }
+      );
+  };
+
+  const handleTelegramClick = () => {
+    window.open("https://t.me/danielsper", "_blank");
+  };
+
+  const handleEmailClick = () => {
+    window.location.href = "mailto:daniel.speranskiy@gmail.com";
+  };
+
+  const handleLocationClick = () => {
+    window.open("https://www.google.com/maps/place/Batumi,+Georgia", "_blank");
+  };
 
   return (
     <PageTransitionWrapper>
-    <div className=" flex items-center justify-center p-4 ">
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        delay={0.7}
-        className="bg-white  bg-opacity-10 rounded-2xl p-8 backdrop-filter backdrop-blur-lg shadow-xl w-full max-w-md"
-      >
-        <h2 className="text-3xl font-bold  mb-6 text-center text-black">Get in Touch</h2>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label htmlFor="name" className="block text-black mb-2">Name</label>
-            <motion.input 
-              whileFocus={{ scale: 1.02 }}
-              type="text" 
-              id="name" 
-              name="name" 
-              value={formData.name} 
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 border-b border-accent focus:border-0 rounded-lg bg-white bg-opacity-20 focus:bg-opacity-30 transition-all duration-300 text-black placeholder-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
-              placeholder="Your Name"
-            />
-          </div>
-          <div>
-            <label htmlFor="email" className="block text-black mb-2">Email</label>
-            <motion.input 
-              whileFocus={{ scale: 1.02 }}
-              type="email" 
-              id="email" 
-              name="email" 
-              value={formData.email} 
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 rounded-lg border-b border-accent focus:border-0 bg-white bg-opacity-20 focus:bg-opacity-30 transition-all duration-300 text-black placeholder-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
-              placeholder="your@email.com"
-            />
-          </div>
-          <div>
-            <label htmlFor="message" className="block text-black mb-2">Message</label>
-            <motion.textarea 
-              whileFocus={{ scale: 1.02 }}
-              id="message" 
-              name="message" 
-              value={formData.message} 
-              onChange={handleChange}
-              required
-              rows="4"
-              className="w-full px-4 py-2 rounded-lg border-b border-accent focus:border-0 bg-white bg-opacity-20 focus:bg-opacity-30 transition-all duration-300 text-black placeholder-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none"
-              placeholder="Your message here..."
-            />
-          </div>
-          <motion.button 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            type="submit"
-            className="w-full bg-gradient-to-r  from-purple-500 to-indigo-500 text-white font-bold py-3 px-4 rounded-lg hover:opacity-90 transition-all duration-300"
-          >
-            Send Message
-          </motion.button>
-        </form>
-      </motion.div>
-    </div>
-    </PageTransitionWrapper>
-  )
-}
+      <div className="rounded-full absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b from-purple-500/20 via-pink-300/20 to-transparent z-0 lg:w-[800px] lg:h-[800px]" />
+      <div className="flex items-center justify-center h-[calc(60vh-90px)] ">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+          className=" w-full max-w-md z-1 relative"
+        >
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-2 md:mb-4 text-gray-800">
+            Send me <span className="text-accent font-normal">a message</span>
+          </h2>
+          <p className="text-center text-lg md:text-xl text-gray-600 mb-6">
+            I want to hear back from you
+          </p>
+          <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+            <motion.div variants={inputVariants}>
+              <div className="relative ">
+                <motion.label
+                  htmlFor="name"
+                  className="absolute left-2 flex gap-2 items-center bottom-7 text-black text-sm transition-all duration-300 pointer-events-none"
+                >
+                  <User2 className="size-4 " aria-hidden />
+                  Name
+                </motion.label>
+                <motion.input
+                  whileFocus={{ scale: 1.02 }}
+                  type="text"
+                  id="name"
+                  name="name"
+                  onFocus={(e) =>
+                    e.target.previousSibling.classList.add(
+                      "-translate-y-9",
+                      "text-xs"
+                    )
+                  }
+                  onBlur={(e) =>
+                    !e.target.value &&
+                    e.target.previousSibling.classList.remove(
+                      "-translate-y-9",
+                      "text-xs"
+                    )
+                  }
+                  required
+                  onChange={handleChange}
+                  autoComplete="off"
+                  className="w-full px-4 py-2 border-b-4 border border-accent focus:border-0 rounded-lg bg-white bg-opacity-20 focus:bg-opacity-30 transition-all duration-300 text-black placeholder-transparent focus:outline-none focus:ring-2 focus:ring-purple-500 mb-3"
+                  placeholder="Your Name"
+                />
+              </div>
+            </motion.div>
 
-export default ContactPage
+            <motion.div variants={inputVariants}>
+              <div className="relative">
+                <motion.label
+                  htmlFor="email"
+                  className="absolute  flex gap-2 items-center left-2 bottom-7 text-black text-sm transition-all duration-300 pointer-events-none"
+                >
+                  <Mail className="size-4 " aria-hidden />
+                  Email
+                </motion.label>
+                <motion.input
+                  whileFocus={{ scale: 1.02 }}
+                  type="email"
+                  id="email"
+                  name="email"
+                  onFocus={(e) =>
+                    e.target.previousSibling.classList.add(
+                      "-translate-y-9",
+                      "text-xs"
+                    )
+                  }
+                  onBlur={(e) =>
+                    !e.target.value &&
+                    e.target.previousSibling.classList.remove(
+                      "-translate-y-9",
+                      "text-xs"
+                    )
+                  }
+                  required
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 rounded-lg border-b-4 border border-accent focus:border-0 bg-white bg-opacity-20 focus:bg-opacity-30 transition-all duration-300 text-black placeholder-transparent focus:outline-none focus:ring-2 focus:ring-purple-500 mb-3"
+                  placeholder="your@email.com"
+                />
+              </div>
+            </motion.div>
+
+            <motion.div variants={inputVariants}>
+              <div className="relative">
+                <motion.label
+                  htmlFor="message"
+                  className="absolute flex gap-2 items-center left-2 top-4 text-black text-sm transition-all duration-300 pointer-events-none"
+                >
+                  <PenLine className="size-4 " aria-hidden />
+                  Message
+                </motion.label>
+                <motion.textarea
+                  whileFocus={{ scale: 1.02 }}
+                  id="message"
+                  name="message"
+                  onFocus={(e) =>
+                    e.target.previousSibling.classList.add(
+                      "-translate-y-10",
+                      "text-xs"
+                    )
+                  }
+                  onBlur={(e) =>
+                    !e.target.value &&
+                    e.target.previousSibling.classList.remove(
+                      "-translate-y-10",
+                      "text-xs"
+                    )
+                  }
+                  required
+                  onChange={handleChange}
+                  rows="4"
+                  className="w-full px-4 py-2 rounded-lg border-b-4 border border-accent focus:border-0 bg-white bg-opacity-20 focus:bg-opacity-30 transition-all duration-300 text-black placeholder-transparent focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none"
+                  placeholder="Your message here..."
+                />
+              </div>
+            </motion.div>
+
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              type="submit"
+              className="w-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-bold py-3 px-4 rounded-lg hover:opacity-90 transition-all duration-300"
+            >
+              {sent ? "Sent" : "Send"}
+            </motion.button>
+          </form>
+        </motion.div>
+      </div>
+
+      {/* buttons */}
+
+      <motion.div
+        variants={containerBtnVariants}
+        initial="hidden"
+        animate="visible"
+        className="grid grid-cols-3 gap-4 lg:gap-8 relative z-1 mt-10"
+      >
+        <motion.button
+          variants={buttonVariants}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={handleTelegramClick}
+          className="w-full h-40 bg-white/20 border-[1px] border-b-4 border-accent rounded-xl flex flex-col justify-evenly items-center"
+        >
+          <div className=" bg-blue-300/30 p-2 rounded-full border-black border-[1px]">
+            <SendHorizonal className="size-10" strokeWidth={1.2} />
+          </div>
+          <p className="font-bold">@danielsper</p>
+        </motion.button>
+
+        <motion.button
+          variants={buttonVariants}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={handleEmailClick}
+          className="w-full h-40 bg-white/20 border-[1px] border-b-4 border-accent rounded-xl flex flex-col justify-evenly items-center "
+        >
+          <div className=" bg-pink-300/30 p-2 rounded-full border-black border-[1px]">
+            <MailIcon className="size-10" strokeWidth={1.2} />
+          </div>
+          <p className="font-bold line-clamp-1">daniel.speranskiy</p>
+        </motion.button>
+
+        <motion.button
+          variants={buttonVariants}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={handleLocationClick}
+          className="w-full h-40 bg-white/20 border-[1px] border-b-4 border-accent rounded-xl flex flex-col justify-evenly items-center"
+        >
+          <div className=" bg-yellow-300/30 p-2 rounded-full border-black border-[1px]">
+            <MapPin className="size-10" strokeWidth={1.2} />
+          </div>
+          <p className="font-bold">Batumi, Georgia</p>
+        </motion.button>
+      </motion.div>
+    </PageTransitionWrapper>
+  );
+};
+
+export default ContactPage;

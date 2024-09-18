@@ -10,7 +10,7 @@ const PageTransitionWrapper = ({ children }) => {
 
   return (
     
-    <AnimatePresence mode="wait" >
+    <AnimatePresence  >
       {children}
       <Transition key={pathname} />
     </AnimatePresence>
