@@ -7,6 +7,8 @@ import { ArrowRight, ChevronDown } from "lucide-react";
 import gsap from "gsap";
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import ResumeDropdown from "@/components/ResumeDropdown";
+
 
 export default function Home() {
   const mainRef = useRef(null);
@@ -150,6 +152,8 @@ export default function Home() {
     }),
   };
 
+
+
   return (
     <PageTransitionWrapper>
       <motion.main
@@ -174,13 +178,7 @@ export default function Home() {
             flair for creating intuitive, high-quality websites that seamlessly
             turn ideas into digital realities.
           </motion.p>
-          <motion.button
-            variants={itemVariants}
-            className="rounded-full border-2 border-accent hover:bg-accent hover:text-white px-4 py-2 text-xl z-1 font-bold text-accent flex items-center justify-center gap-x-2 mt-4 relative"
-          >
-            Resume
-            <ChevronDown />
-          </motion.button>
+          <ResumeDropdown />
         </div>
         <motion.div
           className="flex justify-center items-center absolute top-[30%] md:top-[15%] lg:top-[10%] xl:top-[15%] right-0 md:right-[5%] lg:right-[10%] xl:right-[15%] z-0 "

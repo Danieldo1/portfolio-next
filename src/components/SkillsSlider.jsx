@@ -17,16 +17,16 @@ const SkillsSlider = ({ skills }) => {
       whileHover={{ scale: 0.9 }}
       transition={{ type: "spring", stiffness: 400, damping: 17 }}
     >
-      <div className="bg-white/10 backdrop-blur-sm p-6 rounded-md border border-accent h-full">
+      <div className="bg-white/10  backdrop-blur-sm p-6 rounded-md border border-accent h-full">
         <h3 className="text-2xl font-bold text-accent mb-4 text-center flex flex-row items-center justify-center gap-x-2 w-full">
         <skill.icon className="size-10 text-accent" aria-hidden />
           {skill.category}
         </h3>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 md:justify-center">
           {skill.items.map((item, itemIndex) => (
             <span
               key={itemIndex}
-              className="bg-accent/20 px-3 py-1 rounded-full text-sm"
+              className="bg-accent/20 px-3 py-1 rounded-full text-sm font-bold"
             >
               {item}
             </span>
@@ -42,14 +42,14 @@ const SkillsSlider = ({ skills }) => {
         direction={"horizontal"}
         slidesPerView={1}
         spaceBetween={60}
-        className="h-60 w-full "
+        className="h-60 w-full md:w-3/4 "
         loop={true}
         mousewheel={true}
         pagination={{
           clickable: true,
         }}
         autoplay={{
-          delay: 2500,
+          delay: 3500,
           disableOnInteraction: false,
           pauseOnMouseEnter: true
         }}
@@ -58,7 +58,7 @@ const SkillsSlider = ({ skills }) => {
         {skills.map((skill, skillIndex) => (
           <SwiperSlide
             key={skillIndex}
-            className="w-full h-20 pt-10 cursor-move"
+            className=" h-20 pt-10 cursor-move"
           >
             {renderSkillCard(skill)}
           </SwiperSlide>

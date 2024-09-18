@@ -5,22 +5,22 @@ import Link from "next/link";
 export const socialData = [
   {
     name: "Instagram",
-    link: "https://instagram.com",
+    link: "https://www.instagram.com/dani8l_sp/",
     Icon: Instagram,
   },
   {
     name: "Facebook",
-    link: "https://facebook.com",
+    link: "https://www.facebook.com/daniel.speranskiy1",
     Icon: Facebook,
   },
   {
     name: "LinkedIn",
-    link: "https://linkedin.com",
+    link: "https://www.linkedin.com/in/daniil-speranskii/",
     Icon: Linkedin,
   },
   {
     name: "Github",
-    link: "https://github.com/sanidhyy/modern-portfolio",
+    link: "https://github.com/Danieldo1",
     Icon: Github,
   },
 ];
@@ -41,7 +41,7 @@ const Socials = () => {
               : "hover:text-accent"
           } transition-all duration-300`}
         >
-          <social.Icon aria-hidden />
+          <social.Icon aria-hidden className='' />
           <span className="sr-only">{social.name}</span>
         </Link>
       ))}

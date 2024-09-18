@@ -20,10 +20,10 @@ const AboutPage = () => {
   const skillsRef = useRef(null);
 
   const skillsData = [
-    { category: "Frontend", items: ["React", "Next.js", "Tailwind", "Chakra UI"],icon: Laptop  },
-    { category: "Backend", items: ["Node.js", "Express", "MongoDB"],icon: Router },
-    { category: "Tools", items: ["Git", "GitHub", "VS Code", "Netlify"],icon: DraftingCompass  },
-    { category: "Languages", items: ["JavaScript", "HTML", "CSS"],icon: Languages  },
+    { category: "Frontend", items: ["React", "Next.js","Vue", "Tailwind", "ShadCn", "Framer Motion","GSAP" ],icon: Laptop  },
+    { category: "Backend", items: ["Node", "MongoDB","Prisma","Strapi","Supabase",'Convex'],icon: Router },
+    { category: "Tools", items: ["GitHub","Docker", "VS Code", "Postman", "Vercel", "Figma",],icon: DraftingCompass  },
+    { category: "Languages", items: ["JavaScript", "TypeScript","HTML","CSS",],icon: Languages  },
   ];
 
   useEffect(() => {
@@ -94,9 +94,9 @@ const AboutPage = () => {
         </h1>
 
 
-        <p ref={paragraphRef} className="text-lg md:text-xl font-semibold text-center mb-4 px-6 md:px-12 text-gray-700">
-          Since I was 15, I have dove into the realm of web development. For
-          past 4 years I have been working on my passion of web development. I
+        <p ref={paragraphRef} className="text-lg md:text-xl font-semibold text-center mb-4 px-6 md:px-12 text-gray-700  text-balance">
+          Since I was 15, I have dove into the realm of web development. 
+          For past 4 years I have been working on my passion of web development. I
           have worked on projects ranging from basic web development to full
           stack web development.
         </p>

@@ -277,7 +277,7 @@ const ContactPage = () => {
           <div className=" bg-blue-300/30 p-2 rounded-full border-black border-[1px]">
             <SendHorizonal className="size-10" strokeWidth={1.2} />
           </div>
-          <p className="font-bold">@danielsper</p>
+          <p className="font-bold text-xs sm:text-sm md:text-base">@danielsper</p>
         </motion.button>
 
         <motion.button
@@ -290,7 +290,7 @@ const ContactPage = () => {
           <div className=" bg-pink-300/30 p-2 rounded-full border-black border-[1px]">
             <MailIcon className="size-10" strokeWidth={1.2} />
           </div>
-          <p className="font-bold line-clamp-1">daniel.speranskiy</p>
+          <p className="font-bold sm:text-sm text-xs md:text-base">daniel.speranskiy</p>
         </motion.button>
 
         <motion.button
@@ -303,7 +303,7 @@ const ContactPage = () => {
           <div className=" bg-yellow-300/30 p-2 rounded-full border-black border-[1px]">
             <MapPin className="size-10" strokeWidth={1.2} />
           </div>
-          <p className="font-bold">Batumi, Georgia</p>
+          <p className="font-bold text-xs sm:text-sm md:text-base">Batumi, Georgia</p>
         </motion.button>
       </motion.div>
     </PageTransitionWrapper>
