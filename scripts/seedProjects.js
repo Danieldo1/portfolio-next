@@ -12,7 +12,7 @@ const projectSchema = new mongoose.Schema({
   name: { type: String, required: true },
   description: { type: String, required: true },
   tags: [{ name: String, color: String }],
-  image: { type: String, required: true },
+  images: [{ type: String, required: true }],
   source_code_link: { type: String, required: true },
   project_link: { type: String, required: true },
   key_features: [String],
@@ -70,7 +70,14 @@ const projectsData = [
       "React for building a dynamic and interactive user interface",
       "JavaScript for client-side functionality and enhanced user experience",
     ],
-    image: "unilinkw",
+    images: [
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/449728dd-2d8e-4148-3f5c-dd15993e8700/cusstompublic',
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/760f2d8c-6bc5-49ba-2a33-2e4fd91a6100/cusstompublic',
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/be79232a-c2ed-491b-9dee-64c5ea016800/cusstompublic',
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/a15c0b38-7837-4ef2-7905-1dfdd87cf600/cusstompublic',
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/1ab58aee-ee5f-41bc-0eb8-fe5d6331ce00/cusstompublic'
+
+    ],
     source_code_link: "https://github.com/Danieldo1/make-a-link",
     project_link: "https://uni-links.vercel.app/",
   },
@@ -121,7 +128,12 @@ const projectsData = [
         color: "pink-text-gradient",
       },
     ],
-    image: "/images/stylesync.jpg",
+    images: [
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/21ea5547-9c7a-4b66-1adb-fb31fae79600/cusstompublic',
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/8c2dc080-9bc9-4bfc-9b13-3d53d5564000/cusstompublic',
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/02047e91-c739-4b7a-408f-8f16ffd68300/cusstompublic',
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/47b50247-a778-4207-763f-334972b25100/cusstompublic'
+    ],
     source_code_link: "https://github.com/Danieldo1/style-sync",
     project_link: "https://style-sync.vercel.app/",
     key_features: [
@@ -195,7 +207,16 @@ const projectsData = [
       "Next-auth for secure and customizable authentication",
       "Zod for robust data validation and type safety",
     ],
-    image: "/images/stylesync.jpg",
+    images: [
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/366d15bd-e739-411d-037c-feb2de47dc00/cusstompublic',
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/33ede2ad-fa56-4e70-991f-6b7ac2118300/cusstompublic',
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/10dc9748-04cf-47ba-f723-066b096d7400/cusstompublic',
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/5e8e8988-d67a-4b33-0e9f-5f822ebedd00/cusstompublic',
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/4eb4f700-7654-47e1-d1d4-c924d2070600/cusstompublic',
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/219e8771-16fe-4fbe-2327-83a9633b9e00/cusstompublic',
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/e6c93572-108e-4cf2-9c74-994c9968bd00/cusstompublic'
+        
+    ],
     source_code_link: "https://github.com/Danieldo1/e-depo-admin",
     project_link: "https://pet-plus-us.vercel.app/",
   },
@@ -253,7 +274,11 @@ const projectsData = [
       "Clerk integration for robust authentication and user management",
       "Cloudinary for optimized image storage and manipulation",
     ],
-    image: "/images/editit.jpg",
+    images: [
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/68035df1-92f0-4c46-ab00-47444ab45800/cusstompublic',
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/e44467dd-2da5-4215-b5be-aae6c6333500/cusstompublic',
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/12cbf265-eb64-499f-cf52-d4ee2fc8f400/cusstompublic'
+    ],
     source_code_link: "https://github.com/Danieldo1/edit-it",
     project_link: "https://alter-image.vercel.app/",
   },
@@ -308,7 +333,15 @@ const projectsData = [
       "React for building a dynamic and interactive user interface",
       "Sortable.js implementation for drag-and-drop menu organization",
     ],
-    image: "bar.jpg",
+    images: [
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/d6542f1d-cdf7-4582-ba18-3fa5d03c0c00/cusstompublic',
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/5780df22-9624-4110-355b-ae69a3879000/cusstompublic',
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/ed3712bf-48ab-4d8b-6046-f0ea53300b00/cusstompublic',
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/7866ded2-d59f-4d8d-1278-ec5f0fd9b400/cusstompublic',
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/01c80b6c-27ae-44c8-9094-85862699dc00/cusstompublic',
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/fdc649fd-8ba7-42fa-92d0-f1fa388fb400/cusstompublic',
+
+    ],
     source_code_link: "https://github.com/Danieldo1/code3035",
     project_link: "https://code3035.vercel.app/",
   },
@@ -366,7 +399,12 @@ const projectsData = [
       "AWS S3 and Cloudflare for efficient storage of design assets",
       "OpenAI integration for some AI-powered game elements",
     ],
-    image: "surprizeus",
+    images: [
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/ceee1287-03b0-4e5f-8f66-a9ec5c348900/cusstompublic',
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/483eab84-a0b4-4c10-c9b1-0728e17b2100/cusstompublic',
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/e30b3827-d866-4e1d-3260-a70aa1a8af00/cusstompublic',
+        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/18aa2699-209d-4e76-894e-2bf77b2aea00/cusstompublic'
+    ],
     source_code_link: "https://github.com/Danieldo1/surprize",
     project_link: "https://surprize.us",
   },
@@ -374,29 +412,21 @@ const projectsData = [
 
 async function seedProjects() {
     try {
-        await mongoose.connect(MONGODB_URI, {
-          useNewUrlParser: true,
-          useUnifiedTopology: true,
-        });
-    
-        for (const projectData of projectsData) {
-          const existingProject = await Project.findOne({ name: projectData.name });
-          if (existingProject) {
-            console.log(`Project '${projectData.name}' already exists in the database.`);
-            continue;
-          }
-    
-          const newProject = new Project(projectData);
-          await newProject.save();
-          console.log(`Project '${projectData.name}' has been added to the database.`);
-        }
-    
-        console.log("All projects have been seeded successfully.");
-      } catch (error) {
-        console.error("Error seeding projects:", error);
-      } finally {
-        await mongoose.connection.close();
-      }
-}
+      await mongoose.connect(MONGODB_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      });
+  
+      await Project.deleteMany({});
+  
+      await Project.insertMany(projectsData);
+  
+      console.log('Projects seeded successfully');
+    } catch (error) {
+      console.error('Error seeding projects:', error);
+    } finally {
+      await mongoose.connection.close();
+    }
+  }
 
 seedProjects();

@@ -25,7 +25,7 @@ const ProjectPage = () => {
     try {
       const response = await fetch("/api/projects");
       const data = await response.json();
-      setProjects(data?.projects);
+      setProjects(data?.projects.reverse());
       setIsLoading(false);
     } catch (error) {
       console.error("Error fetching projects:", error);
@@ -112,7 +112,7 @@ const ProjectPage = () => {
                     }`}
                   >
                     <img
-                      src={project.image}
+                      src={project.images[0]}
                       alt={project.name}
                       className="w-full md:w-1/2 h-64 md:h-auto object-cover"
                     />
@@ -123,18 +123,10 @@ const ProjectPage = () => {
                       <p className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-stone-400 via-gray-700 mb-6">
                         {project.description.substring(0, 200).concat("...")}
                       </p>
-                      {/* <CustomButton link={`/work/${project._id}`} /> */}
                       <Drawer.Root>
                         <Drawer.Trigger asChild>
                         <CustomButton 
-                        onClick={() => openProjectDetails(project)}
-                        />
-                          {/* <button
-                            onClick={() => openProjectDetails(project)}
-                            className="px-6 py-3 bg-accent text-white rounded-full text-lg font-semibold hover:from-purple-600 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 inline-block text-center"
-                          >
-                            Explore Project
-                          </button> */}
+                        onClick={() => openProjectDetails(project)} />
                         </Drawer.Trigger>
                         <Drawer.Portal>
                           <Drawer.Overlay className="fixed inset-0 bg-black/50 " />
