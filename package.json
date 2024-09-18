@@ -6,9 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed": "node scripts/seedProject.js"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.1.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "dotenv": "^16.4.5",
+    "esm": "^3.2.25",
     "framer-motion": "^11.5.4",
     "gsap": "^3.12.5",
     "lucide-react": "^0.441.0",
@@ -20,7 +26,10 @@
     "react-dom": "^18",
     "swipeable-react": "^2.0.0",
     "swiper": "^11.1.14",
-    "tailwind-scrollbar-hide": "^1.1.7"
+    "tailwind-merge": "^2.5.2",
+    "tailwind-scrollbar-hide": "^1.1.7",
+    "tailwindcss-animate": "^1.0.7",
+    "vaul": "^0.9.3"
   },
   "devDependencies": {
     "eslint": "^8",

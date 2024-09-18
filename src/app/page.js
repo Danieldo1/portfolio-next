@@ -12,6 +12,9 @@ export default function Home() {
   const mainRef = useRef(null);
   const imageRef = useRef(null);
   const headingRef = useRef(null);
+  const arrowRef = useRef(null);
+  const containerRef = useRef(null);
+  const spinRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -43,6 +46,43 @@ export default function Home() {
     }, mainRef);
 
     return () => ctx.revert();
+  }, []);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const arrow = arrowRef.current;
+    const image = spinRef.current;
+
+    if (!container || !arrow || !image) return;
+
+    const arrowTl = gsap.timeline({ paused: true });
+
+    arrowTl.to(arrow, {
+      rotation: 360,
+      duration: 0.5,
+      scale: 1.25,
+      ease: "power2.out",
+    });
+
+    gsap.set(image, { rotation: 0 });
+    const spinTl = gsap.timeline({ repeat: -1, ease: "none" });
+    spinTl.to(image, { rotation: 360, duration: 10 });
+
+    container.addEventListener("mouseenter", () => {
+      arrowTl.play();
+      gsap.to(spinTl, { timeScale: 0.2, duration: 0.5 });
+    });
+
+    container.addEventListener("mouseleave", () => {
+      arrowTl.reverse();
+      gsap.to(spinTl, { timeScale: 1, duration: 0.5 });
+    });
+
+    return () => {
+      container.removeEventListener("mouseenter", () => {});
+      container.removeEventListener("mouseleave", () => {});
+      spinTl.kill();
+    };
   }, []);
 
   const containerVariants = {
@@ -87,14 +127,27 @@ export default function Home() {
   };
 
   const leftImageVariants = {
-    hidden: { x: -100, opacity: 0, rotate: 10 },
+    hidden: { x: -100, opacity: 0, rotate: 100 },
     visible: {
       x: 0,
       y: 50,
       opacity: 1,
-      rotate: 0,
-      transition: { duration: 0.7, ease: "easeOut", delay: 0.5 },
+      rotate: -30,
+      transition: { duration: 0.7, ease: "easeOut", delay: 0.7 },
     },
+  };
+
+  const circleVariants = {
+    hidden: { x: 100, opacity: 0 },
+    visible: (i) => ({
+      x: 0,
+      opacity: 1,
+      transition: {
+        delay: 2 + i * 0.2, // 2 second initial delay, then stagger by 0.2 seconds
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    }),
   };
 
   return (
@@ -133,35 +186,62 @@ export default function Home() {
           className="flex justify-center items-center absolute top-[30%] md:top-[15%] lg:top-[10%] xl:top-[15%] right-0 md:right-[5%] lg:right-[10%] xl:right-[15%] z-0 "
           variants={imageVariants}
         >
-           <div className="absolute top-[40%] left-[60%] -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] border-2 border-accent rounded-full" />
-          <div ref={imageRef} className='select-none'>
+          <motion.div
+            className="absolute top-[10%] left-[30%] -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] border-4 border-accent rounded-full"
+            variants={circleVariants}
+            custom={0}
+          />
+          <motion.div
+            className="absolute top-[14%] left-[36%] -translate-x-1/2 -translate-y-1/2 w-[230px] h-[230px] border-8 border-white rounded-full bg-accent"
+            variants={circleVariants}
+            custom={1}
+          />
+          <motion.div 
+        className="absolute top-[18%] left-[42%] -translate-x-1/2 -translate-y-1/2 w-[180px] h-[180px] border-[12px] border-white rounded-full"
+        variants={circleVariants}
+        custom={2}
+      />
+      <motion.div 
+        className="absolute top-[22%] left-[48%] -translate-x-1/2 -translate-y-1/2 w-[130px] h-[130px] border-[16px] border-white rounded-full"
+        variants={circleVariants}
+        custom={3}
+      />
+          <div ref={imageRef} className="select-none">
             <Image
               src="/file.webp"
               alt="image"
               width={400}
               height={400}
               priority
-              className="rounded-full z-1 select-none"
+              className="rounded-full z-1 select-none  pointer-events-none"
             />
           </div>
         </motion.div>
-      <motion.div 
-      variants={leftImageVariants}
-      className="spin-container absolute bottom-[25%] hidden md:block left-[15%] w-[100px] h-[100px]">
-      <Image
-        src="/rounded-text.png"
-        alt="Spinning text"
-        fill
-        priority
-        className="invert slow-spin z-1"
-      />
-      <div>
-
-      <ArrowRight className='icon absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40px] h-[40px] hover:w-[50px] hover:h-[50px] cursor-pointer  ' />
-      </div>
-    </motion.div>
+        <motion.div
+          ref={containerRef}
+          variants={leftImageVariants}
+          className="absolute bottom-[25%] hidden md:block"
+        >
+          <div
+            ref={spinRef}
+            className="spin-container  left-[15%] w-[100px] h-[100px] cursor-pointer"
+          >
+            <Image
+              src="/rounded-text.png"
+              alt="Spinning text"
+              fill
+              priority
+              className="invert z-1 select-none  pointer-events-none"
+            />
+          </div>
+          <div>
+            <ArrowRight
+              ref={arrowRef}
+              className="icon absolute  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40px] h-[40px]"
+            />
+          </div>
+        </motion.div>
       </motion.main>
-      
     </PageTransitionWrapper>
   );
 }

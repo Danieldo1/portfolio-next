@@ -88,9 +88,12 @@ const AboutPage = () => {
       <PageWrapper>
       <main ref={mainRef} className="min-h-screen overflow-y-auto">
       <div className="container mx-auto p-4">
-        <h1 ref={headingRef} className="text-3xl md:text-5xl font-bold text-center mb-2 md:mb-4 text-gray-800">
-          <span>Crafting</span> <span className="text-accent">full stack web</span> <span>apps</span>
+       
+        <h1 ref={headingRef} className="text-3xl md:text-5xl font-bold text-center mb-2 md:mb-4 text-gray-800  backdrop-blur-[0.5px]">
+          <span>Crafting</span> <span className="text-accent font-normal">full stack web</span> <span>apps</span>
         </h1>
+
+
         <p ref={paragraphRef} className="text-lg md:text-xl font-semibold text-center mb-4 px-6 md:px-12 text-gray-700">
           Since I was 15, I have dove into the realm of web development. For
           past 4 years I have been working on my passion of web development. I
@@ -115,7 +118,7 @@ const AboutPage = () => {
 
         <div ref={skillsRef} className="mt-12">
           <h2 className="text-3xl md:text-5xl font-bold text-center mb-2 text-gray-800">
-            My <span className="text-accent">skills</span>
+            My <span className="text-accent font-normal">skills</span>
           </h2>
           <SkillsSlider skills={skillsData} />
         </div>
