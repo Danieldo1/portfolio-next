@@ -69,7 +69,7 @@ const ProjectPage = () => {
       x: direction < 0 ? 1000 : -1000,
       opacity: 0,
     }),
-  }
+  };
 
   return (
     <PageTransitionWrapper>
@@ -97,7 +97,7 @@ const ProjectPage = () => {
               exit="exit"
               transition={{
                 x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.2 }
+                opacity: { duration: 0.2 },
               }}
               className="w-full max-w-4xl p-8 absolute"
             >
@@ -107,16 +107,23 @@ const ProjectPage = () => {
                 projects?.map((project, index) => (
                   <div
                     key={index}
-                    className={`bg-white/10 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row ${
+                    className={`bg-white/50 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row ${
                       index !== currentIndex ? "hidden" : ""
                     }`}
                   >
-                    <img
-                      src={project.images[0]}
-                      alt={project.name}
-                      className="w-full md:w-1/2 h-64 md:h-auto object-cover"
-                    />
-                    <div className="p-6 md:w-1/2 flex flex-col justify-center">
+                    {/* Image container with gradient overlay */}
+                    <div className="relative w-full md:w-1/2">
+                      <img
+                        src={project.images[0]}
+                        alt={project.name}
+                        className="w-full h-64 md:h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-transparent via-white/10 to-white opacity-60" />
+                    </div>
+                    {/* Divider */}
+                    {/* <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full z-10" /> */}
+                    {/* Text and button container */}
+                    <div className="relative p-6 md:w-1/2 flex flex-col justify-center bg-white/50 backdrop-blur-md">
                       <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-accent to-emerald-400">
                         {project.name}
                       </h2>
@@ -125,8 +132,9 @@ const ProjectPage = () => {
                       </p>
                       <Drawer.Root>
                         <Drawer.Trigger asChild>
-                        <CustomButton 
-                        onClick={() => openProjectDetails(project)} />
+                          <CustomButton
+                            onClick={() => openProjectDetails(project)}
+                          />
                         </Drawer.Trigger>
                         <Drawer.Portal>
                           <Drawer.Overlay className="fixed inset-0 bg-black/50 " />
