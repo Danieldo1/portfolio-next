@@ -173,7 +173,7 @@ const handleClick = () => {
         
         <div className="z-10 lg:mt-20">
           <h1 ref={headingRef} className="text-4xl  font-bold mb-2">
-            <span>Hi,</span> <span>I'm</span>{" "}
+            <span>Hi,</span> <span>I&apos;m</span>{" "}
             <span className="text-accent">Daniil</span>
           </h1>
           <motion.p
