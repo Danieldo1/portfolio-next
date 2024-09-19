@@ -164,14 +164,14 @@ const handleClick = () => {
     <PageTransitionWrapper>
       <motion.main
         ref={mainRef}
-        className="grid md:grid-cols-2 container mx-auto"
+        className="grid md:grid-cols-2 container mx-auto min-h-screen overflow-hidden"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
         exit="exit"
       >
         
-        <div className="z-10 lg:mt-20">
+        <div className="z-10 lg:mt-20 ">
           <h1 ref={headingRef} className="text-4xl  font-bold mb-2">
             <span>Hi,</span> <span>I&apos;m</span>{" "}
             <span className="text-accent">Daniil</span>
