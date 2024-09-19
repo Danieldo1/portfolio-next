@@ -164,7 +164,7 @@ const handleClick = () => {
     <PageTransitionWrapper>
       <motion.main
         ref={mainRef}
-        className="grid md:grid-cols-2 container mx-auto min-h-screen overflow-hidden"
+        className="grid md:grid-cols-2 container mx-auto h-fit overflow-hidden"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -218,7 +218,7 @@ const handleClick = () => {
               width={400}
               height={400}
               priority
-              className="rounded-full z-1 select-none  pointer-events-none"
+              className="rounded-full z-1 select-none overflow pointer-events-none"
             />
           </div>
         </motion.div>

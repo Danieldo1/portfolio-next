@@ -99,10 +99,10 @@ const ProjectPage = () => {
 
   return (
     <PageTransitionWrapper>
-    <div className="flex flex-col h-[calc(90vh-4rem)] md:h-screen">
+    <div className="flex flex-col h-[calc(90vh-4rem)]">
       <AnimatedTitle leftWord="Creative" rightWord="visions" />
       <div className="flex-grow relative overflow-hidden">
-        <div className="absolute inset-7 flex items-start justify-center">
+        <div className="absolute inset-0 min-h-fit flex items-start justify-center">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
               key={currentIndex}
@@ -188,36 +188,21 @@ const ProjectPage = () => {
         {/* Navigation buttons */}
         <button
           onClick={prevProject}
-          className="absolute z-[9] top-[25%]  left-1 xl:left-20 p-1 md:p-2 bg-accent/15 rounded-full hover:bg-accent/20 transition-colors transform hover:scale-110"
+          className="absolute z-[9px] top-[25%]  left-1 xl:left-20 p-1 md:p-2 bg-accent/15 rounded-full hover:bg-accent/20 transition-colors transform hover:scale-110"
           aria-label="Previous project"
         >
           <ChevronLeftIcon className="w-8 h-8 text-black/60" />
         </button>
         <button
           onClick={nextProject}
-          className="absolute z-[9] top-[25%]  right-1 xl:right-20 p-1 md:p-2 bg-accent/15 rounded-full hover:bg-accent/20 transition-colors transform hover:scale-110"
+          className="absolute z-[9px] top-[25%]  right-1 xl:right-20 p-1 md:p-2 bg-accent/15 rounded-full hover:bg-accent/20 transition-colors transform hover:scale-110"
           aria-label="Next project"
         >
           <ChevronRightIcon className="w-8 h-8 text-black/60" />
         </button>
       </div>
 
-      <footer className="p-6 justify-center mt-auto items-center z-10 hidden lg:flex">
-        <div className="flex space-x-3">
-          {projects.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`w-4 h-4 rounded-full transition-all duration-300 ${
-                index === currentIndex
-                  ? "bg-accent scale-125"
-                  : "bg-gray-600 hover:bg-gray-400"
-              }`}
-              aria-label={`Go to project ${index + 1}`}
-            />
-          ))}
-        </div>
-      </footer>
+      
     </div>
   </PageTransitionWrapper>
   );

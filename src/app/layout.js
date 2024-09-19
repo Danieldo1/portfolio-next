@@ -81,8 +81,8 @@ export default function RootLayout({ children }) {
       <CustomCursor />
       <div className="flex flex-col ">
         <Header className="" />
-        <main className="flex-grow overflow-y-auto">
-          <div className="container mx-auto px-4 py-8">
+        <main className="">
+          <div className="container mx-auto px-4 py-8 ">
             {children}
           </div>
         </main>

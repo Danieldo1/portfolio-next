@@ -161,7 +161,7 @@ const ServiceCard = ({ service, index }) => {
       whileTap="tap"
     >
       <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
-      <div className="relative z-[8]">
+      <div className="relative z-[8px]">
         <motion.div
           variants={iconVariants}
           className="text-white absolute  sm:mb-4 -top-8 md:-top-10 left-0 "
@@ -187,12 +187,12 @@ const ServiceCard = ({ service, index }) => {
 const BentoBox = () => {
  
   return (
-    <section className="py-6 sm:py-8 ">
-      <div className="flex flex-col h-[calc(100vh-4rem)] overflow-hidden relative">
+    <section className="py-6 sm:py-8 pb-10 md:pb-0">
+      <div className="flex flex-col h-fit overflow-hidden relative ">
         <AnimatedTitle leftWord="My" rightWord="services" />
         
-        <div className="flex-grow overflow-y-auto pt-4 px-4 pb-60 relative scrollbar-hide">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 max-w-5xl mx-auto mb-20 md:mb-0">
+        <div className="">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 max-w-5xl mx-auto pb-10 md:mb-0">
             {services.map((service, index) => (
               <ServiceCard key={index} service={service} index={index} />
             ))}

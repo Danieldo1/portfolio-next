@@ -3,20 +3,18 @@
 @tailwind utilities;
 
 html, body {
-  height: 100vh;
+  height: 90vh;
   -webkit-overflow-scrolling: touch;
 }
 
-@layer base {
+/* @layer base {
   body {
     @apply scrollbar-hide;
   }
 
   
-}
-.someclass{
-  height: -webkit-fill-available;
-}
+} */
+
 .translate-z-0 {
   transform: translateZ(0px);
 }

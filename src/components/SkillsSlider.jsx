@@ -13,11 +13,11 @@ const SkillsSlider = ({ skills }) => {
   const renderSkillCard = (skill) => (
     <motion.div
       key={skill.category}
-      className="w-full h-40 px-2 "
+      className="w-full h-fit px-2 "
       whileHover={{ scale: 0.9 }}
       transition={{ type: "spring", stiffness: 400, damping: 17 }}
     >
-      <div className="bg-white/10  backdrop-blur-sm p-6 rounded-md border border-accent h-full ">
+      <div className="bg-white/10 backdrop-blur-sm p-6 rounded-md border border-accent h-full ">
         <h3 className="text-2xl font-bold text-accent mb-4 text-center flex flex-row items-center justify-center gap-x-2 w-full">
         <skill.icon className="size-10 text-accent" aria-hidden />
           {skill.category}
@@ -37,7 +37,7 @@ const SkillsSlider = ({ skills }) => {
   );
 
   return (
-    <div className="h-20 ">
+    <div className="h-fit mb-20">
       <Swiper
         direction={"horizontal"}
         slidesPerView={1}
