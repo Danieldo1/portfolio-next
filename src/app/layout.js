@@ -75,21 +75,21 @@ export default function RootLayout({ children }) {
           sizes="<generated>"
         />
       </head>
-    <body
-      className={`${geistSans.variable} ${geistMono.variable} grid-main antialiased bg-pink-100 text-black`}
-    >
-      <CustomCursor />
-      <div className="flex flex-col someclass">
-        <Header className="" />
-        <main className="flex-grow overflow-y-auto">
-          <div className="container mx-auto px-4 py-8">
-            {children}
-          </div>
-        </main>
-        <Navbar />
-      </div>
-      <Toaster />
-    </body>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} grid-main antialiased bg-pink-100 text-black`}
+      >
+        <CustomCursor />
+        <div className="flex flex-col min-h-screen">
+          <Header className="flex-shrink-0" />
+          <main className="flex-grow overflow-y-auto overscroll-y-contain">
+            <div className="container mx-auto px-4 py-8">
+              {children}
+            </div>
+          </main>
+          <Navbar className="flex-shrink-0" />
+        </div>
+        <Toaster />
+      </body>
   </html>
   );
 }
