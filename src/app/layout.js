@@ -68,7 +68,7 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} grid-main antialiased bg-pink-100 text-black`}
     >
       <CustomCursor />
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-[100vh]">
         <Header className="" />
         <main className="flex-grow overflow-y-auto">
           <div className="container mx-auto px-4 py-8">
