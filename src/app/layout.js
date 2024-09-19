@@ -59,7 +59,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning={true}>
+    <html lang="en" suppressHydrationWarning={true} className='scrollbar-hide'>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link
@@ -76,7 +76,7 @@ export default function RootLayout({ children }) {
         />
       </head>
     <body
-      className={`${geistSans.variable} ${geistMono.variable} grid-main antialiased bg-pink-100 text-black`}
+      className={`${geistSans.variable} ${geistMono.variable} grid-main antialiased bg-pink-100 text-black `}
     >
       <CustomCursor />
       <div className="flex flex-col ">

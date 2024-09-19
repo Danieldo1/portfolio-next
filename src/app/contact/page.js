@@ -129,9 +129,9 @@ const ContactPage = () => {
 
   return (
     <PageTransitionWrapper>
-      <div className="min-h-screen relative overflow-x-hidden overflow-y-scroll pb-10">
+      <div className="min-h-screen relative overflow-x-hidden overflow-y-scroll mb-10 ">
         <div className="rounded-full absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b from-purple-500/20 via-pink-300/20 to-transparent z-0 lg:w-[800px] lg:h-[800px]" />
-        <div className="relative z-10 pt-10 px-4 ">
+        <div className="relative z-[9] pt-10 px-4 ">
           <motion.div
             initial="hidden"
             animate="visible"
