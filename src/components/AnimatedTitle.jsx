@@ -5,12 +5,15 @@ import { motion } from "framer-motion";
 
 const AnimatedTitle = ({leftWord, rightWord}) => {
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0 ,},
     visible: {
       opacity: 1,
+      
       transition: {
-        delayChildren: 0.3,
+        delayChildren: 0.7,
+        delay: 0.7,
         staggerChildren: 0.2
+
       }
     }
   };

@@ -192,7 +192,7 @@ const BentoBox = () => {
         <AnimatedTitle leftWord="My" rightWord="services" />
         
         <div className="flex-grow overflow-y-auto pt-4 px-4 pb-60 relative scrollbar-hide">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 max-w-5xl mx-auto mb-20 md:mb-0">
             {services.map((service, index) => (
               <ServiceCard key={index} service={service} index={index} />
             ))}
