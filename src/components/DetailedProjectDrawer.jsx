@@ -94,9 +94,9 @@ const DetailedProjectDrawer = ({ project }) => {
         <AnimatePresence>
           {lightboxOpen && (
             <FullSizeImage
-            selectedImage={selectedImage}
-            closeLightbox={closeLightbox}
-          />
+              selectedImage={selectedImage}
+              closeLightbox={closeLightbox}
+            />
           )}
         </AnimatePresence>
 
@@ -111,34 +111,24 @@ const DetailedProjectDrawer = ({ project }) => {
           variants={itemVariants}
           className="flex flex-col sm:flex-row mb-4 gap-4"
         >
-          <Button
-            asChild
-            className="flex items-center gap-2 bg-black hover:scale-105 transition duration-300 "
+          <motion.button
+          onClick={() => window.open(project.project_link, "_blank")}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.9 }}
+            className="flex items-center gap-2 bg-white text-black text-center border-[1px] border-black justify-center px-4 py-2 rounded-lg transition duration-300 hover:bg-gray-100 "
           >
-            <Link
-              href={project.source_code_link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-white"
-            >
-              <Github className="w-5 h-5 text-white" />
-              View Source Code
-            </Link>
-          </Button>
-          <Button
-            asChild
-            className="flex items-center gap-2 bg-white border-[1px] border-black hover:bg-gray-100 hover:scale-105 transition duration-300"
+            <ExternalLink className="w-5 h-5" />
+            Visit Project
+          </motion.button>
+          <motion.button
+            onClick={() => window.open(project.source_code_link, "_blank")}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.9 }}
+            className="flex items-center gap-2 bg-black text-white text-center  justify-center px-4 py-2 rounded-lg transition duration-300 hover:bg-gray-800 "
           >
-            <Link
-              href={project.project_link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-black"
-            >
-              <ExternalLink className="w-5 h-5" />
-              Visit Project
-            </Link>
-          </Button>
+            <Github className="w-5 h-5 text-white" />
+            View Source Code
+          </motion.button>
         </motion.div>
 
         {/* Technologies Block */}
@@ -154,16 +144,9 @@ const DetailedProjectDrawer = ({ project }) => {
           className="flex flex-wrap gap-2 mb-8"
         >
           {project.tags.map((tech) => (
-            <motion.div 
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-
-            key={tech.name}>
-
-            <Badge  className={`${tech.color} select-none`}>
+            <Badge key={tech.name} className={`${tech.color} select-none`}>
               {tech.name}
             </Badge>
-            </motion.div>
           ))}
         </motion.div>
 

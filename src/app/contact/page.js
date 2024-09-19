@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import toast from "react-hot-toast";
+import AnimatedTitle from "@/components/AnimatedTitle";
 
 const ContactPage = () => {
   const formRef = useRef();
@@ -132,19 +133,20 @@ const ContactPage = () => {
       <div className="min-h-fit mb-16">
         <div className="rounded-full absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b from-purple-500/20 via-pink-300/20 to-transparent z-0 lg:w-[800px] lg:h-[800px]" />
         <div className="relative z-[8px] pt-10 px-4 ">
-          <a href="#">Hello</a>
           <motion.div
             initial="hidden"
             animate="visible"
             variants={containerVariants}
             className="w-full max-w-md mx-auto"
           >
-            <h2 className="text-3xl md:text-5xl font-bold text-center mb-2 md:mb-4 text-gray-800">
-              Send me <span className="text-accent font-normal">a message</span>
-            </h2>
-            <p className="text-center text-lg md:text-xl text-gray-600 mb-6">
+            <AnimatedTitle leftWord="Contact" rightWord="me" />
+            <motion.p
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.5, delay: 1.5 }}
+            className="text-center text-lg md:text-xl text-gray-600 mb-6">
               I want to hear back from you
-            </p>
+            </motion.p>
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               <motion.div variants={inputVariants}>
                 <div className="relative ">
