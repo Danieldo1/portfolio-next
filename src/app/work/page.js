@@ -102,7 +102,7 @@ const ProjectPage = () => {
     <div className="flex flex-col h-screen">
       <AnimatedTitle leftWord="Creative" rightWord="visions" />
       <div className="flex-grow relative overflow-hidden">
-        <div className="absolute inset-7 flex items-start md:items-center justify-center">
+        <div className="absolute inset-7 flex items-start justify-center">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
               key={currentIndex}
@@ -142,7 +142,7 @@ const ProjectPage = () => {
                         <img
                           src={project.images[imageIndex]}
                           alt={project.name}
-                          className="w-full h-64 md:h-full object-cover"
+                          className="w-full h-40 sm:h-64 md:h-full object-cover"
                         />
                       </motion.div>
                       <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-transparent via-white/10 to-white opacity-60" />
@@ -188,14 +188,14 @@ const ProjectPage = () => {
         {/* Navigation buttons */}
         <button
           onClick={prevProject}
-          className="absolute z-[9] top-[20%] md:top-1/2 left-1 xl:left-20 p-1 md:p-2 bg-accent/15 rounded-full hover:bg-accent/20 transition-colors transform hover:scale-110"
+          className="absolute z-[9] top-[25%]  left-1 xl:left-20 p-1 md:p-2 bg-accent/15 rounded-full hover:bg-accent/20 transition-colors transform hover:scale-110"
           aria-label="Previous project"
         >
           <ChevronLeftIcon className="w-8 h-8 text-black/60" />
         </button>
         <button
           onClick={nextProject}
-          className="absolute z-[9] top-[20%] md:top-1/2 right-1 xl:right-20 p-1 md:p-2 bg-accent/15 rounded-full hover:bg-accent/20 transition-colors transform hover:scale-110"
+          className="absolute z-[9] top-[25%]  right-1 xl:right-20 p-1 md:p-2 bg-accent/15 rounded-full hover:bg-accent/20 transition-colors transform hover:scale-110"
           aria-label="Next project"
         >
           <ChevronRightIcon className="w-8 h-8 text-black/60" />

@@ -156,7 +156,6 @@ const ServiceCard = ({ service, index }) => {
       variants={cardVariants}
       // onTapEnd={handleTapEnd}
       initial="hidden"
-      drag
       animate="visible"
       whileHover="hover"
       whileTap="tap"
