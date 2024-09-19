@@ -45,7 +45,7 @@ const CustomCursor = () => {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 w-8 h-8 pointer-events-none z-50"
+      className="fixed top-0 left-0 w-8 h-8 pointer-events-none z-50 hidden sm:block"
       animate={isPointer ? 'pointer' : 'default'}
       variants={variants}
       transition={{ type: 'spring', stiffness: 500, damping: 28 }}

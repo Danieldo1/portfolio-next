@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion,useAnimation } from "framer-motion";
 import {
   Code,
   Palette,
@@ -74,6 +74,8 @@ const services = [
 ];
 
 const ServiceCard = ({ service, index }) => {
+  const controls = useAnimation();
+
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -88,15 +90,41 @@ const ServiceCard = ({ service, index }) => {
     },
     hover: {
       scale: 1.05,
-      boxShadow: "0px 10px 30px rgba(0,0,0,0.1)",
+      // boxShadow: "0px 10px 30px rgba(0,0,0,0.1)",
       transition: {
         type: "spring",
         stiffness: 400,
         damping: 10,
       },
     },
-    tap: { scale: 0.95 },
+    tap: {
+      opacity: 0.30,
+      scale: 0.95,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 5,
+        duration: 0.55,
+      },
+      onComplete: () => {
+        handleTapEnd();
+      },
+    }
   };
+  
+
+  const handleTapEnd = async () => {
+    
+    await controls.start({ opacity: 0.30, scale: 0.95 });
+    
+    // Flicker effect
+    await controls.start({ opacity: 1, scale: 1, transition: { duration: 0.6 } });
+    await controls.start({ opacity: 0.5, transition: { duration: 0.6 } });
+    await controls.start({ opacity: 1, transition: { duration: 0.6 } });
+    await controls.start({ opacity: 0.7, transition: { duration: 0.6 } });
+    await controls.start({ opacity: 1, transition: { duration: 0.8 } });
+  };
+
 
   const iconVariants = {
     hidden: { rotate: -180, opacity: 0 },
@@ -126,7 +154,9 @@ const ServiceCard = ({ service, index }) => {
     <motion.div
       className={`${service.span} ${service.color} ${shadowColor} shadow-lg  p-6 rounded-2xl overflow-hidden relative cursor-help group`}
       variants={cardVariants}
+      // onTapEnd={handleTapEnd}
       initial="hidden"
+      drag
       animate="visible"
       whileHover="hover"
       whileTap="tap"
@@ -160,7 +190,7 @@ const BentoBox = () => {
   return (
     <section className="py-6 sm:py-8 ">
       <div className="flex flex-col h-[calc(100vh-4rem)] overflow-hidden relative">
-        <AnimatedTitle leftWord="My" rightWord="Services" />
+        <AnimatedTitle leftWord="My" rightWord="services" />
         
         <div className="flex-grow overflow-y-auto pt-4 px-4 pb-60 relative scrollbar-hide">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 max-w-5xl mx-auto">

@@ -102,7 +102,7 @@ const ProjectPage = () => {
       <div className="flex flex-col min-h-[80vh] overflow-scroll">
         <AnimatedTitle leftWord="Creative" rightWord="visions" />
 
-        <main className="flex-grow flex items-center justify-center z-10 relative ">
+        <main className="flex-grow flex items-center justify-center z-[8] relative ">
           <button
             onClick={prevProject}
             className="absolute -left-3 xl:left-20 z-20 p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors transform hover:scale-110"
