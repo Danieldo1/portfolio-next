@@ -162,7 +162,7 @@ export default function Home() {
     <PageTransitionWrapper>
       <motion.main
         ref={mainRef}
-        className="grid md:grid-cols-2 container mx-auto min-h-screen overflow-hidden absolute "
+        className="grid md:grid-cols-2 container mx-auto min-h-screen overflow-hidden absolute md:fixed "
         variants={containerVariants}
         initial="hidden"
         animate="visible"
