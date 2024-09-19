@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PageTransitionWrapper from "../PageTransitionWrapper";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
@@ -17,10 +17,25 @@ const ProjectPage = () => {
   const [direction, setDirection] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [imageIndex, setImageIndex] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
+  const intervalRef = useRef(null);
 
   useEffect(() => {
     fetchProjects();
   }, []);
+
+  useEffect(() => {
+    if (!isHovering) {
+      intervalRef.current = setInterval(nextImage, 3500);
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [isHovering, projects[currentIndex]?.images.length]);
 
   const fetchProjects = async () => {
     try {
@@ -45,16 +60,26 @@ const ProjectPage = () => {
     );
   };
 
-  const currentProject = projects[currentIndex];
-
   const openProjectDetails = (project) => {
     setSelectedProject(project);
   };
 
-  const projectVariants = {
-    enter: { opacity: 0, scale: 0.95 },
-    center: { opacity: 1, scale: 1 },
-    exit: { opacity: 0, scale: 1.05 },
+  const nextImage = () => {
+    setImageIndex((prev) => (prev + 1) % projects[currentIndex].images.length);
+  };
+
+  const cardVariants = {
+    hover: {
+      scale: 1.00,
+      transition: { duration: 0.3 },
+    },
+  };
+
+  const imageVariants = {
+    hover: {
+      scale: 1.1,
+      transition: { duration: 0.5 },
+    },
   };
 
   const slideVariants = {
@@ -75,7 +100,7 @@ const ProjectPage = () => {
   return (
     <PageTransitionWrapper>
       <div className="flex flex-col min-h-[80vh] overflow-scroll">
-       <AnimatedTitle leftWord="Creative" rightWord="visions" />
+        <AnimatedTitle leftWord="Creative" rightWord="visions" />
 
         <main className="flex-grow flex items-center justify-center z-10 relative ">
           <button
@@ -104,24 +129,35 @@ const ProjectPage = () => {
                 <ProjectSkeletonLoader />
               ) : (
                 projects?.map((project, index) => (
-                  <div
+                  <motion.div
                     key={index}
-                    className={`bg-white/50 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row ${
+                    variants={cardVariants}
+                    whileHover="hover"
+                    className={`bg-white/50 lg:h-[400px] backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row ${
                       index !== currentIndex ? "hidden" : ""
                     }`}
+                    // style={{ height: '400px' }}
                   >
                     {/* Image container with gradient overlay */}
-                    <div className="relative w-full md:w-1/2">
-                      <img
-                        src={project.images[0]}
-                        alt={project.name}
-                        className="w-full h-64 md:h-full object-cover"
-                      />
-                         {/* Divider gradient */}
+                    <motion.div
+                      onHoverStart={() => setIsHovering(true)}
+                      onHoverEnd={() => setIsHovering(false)}
+                      className="relative w-full md:w-1/2 overflow-clip"
+                    >
+                      <motion.div
+                        variants={imageVariants}
+                        className="w-full h-full "
+                      >
+                        <img
+                          src={project.images[imageIndex]}
+                          alt={project.name}
+                          className="w-full h-64 md:h-full object-cover "
+                        />
+                      </motion.div>
+                      {/* Divider gradient */}
                       <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-transparent via-white/10 to-white opacity-60" />
-                    </div>
-                 
-                    
+                    </motion.div>
+
                     {/* Text and button container */}
                     <div className="relative p-6 md:w-1/2 flex flex-col justify-center bg-white/50 backdrop-blur-md">
                       <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-accent to-emerald-400">
@@ -149,7 +185,7 @@ const ProjectPage = () => {
                         </Drawer.Portal>
                       </Drawer.Root>
                     </div>
-                  </div>
+                  </motion.div>
                 ))
               )}
             </motion.div>
@@ -181,7 +217,6 @@ const ProjectPage = () => {
           </div>
         </footer>
       </div>
-
     </PageTransitionWrapper>
   );
 };
