@@ -162,7 +162,7 @@ const ServiceCard = ({ service, index }) => {
       whileTap="tap"
     >
       <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
-      <div className="relative z-10">
+      <div className="relative z-[8]">
         <motion.div
           variants={iconVariants}
           className="text-white absolute  sm:mb-4 -top-8 md:-top-10 left-0 "
