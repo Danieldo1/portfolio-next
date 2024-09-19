@@ -102,7 +102,7 @@ const ProjectPage = () => {
     <div className="flex flex-col h-screen">
       <AnimatedTitle leftWord="Creative" rightWord="visions" />
       <div className="flex-grow relative overflow-hidden">
-        <div className="absolute inset-7 flex items-start md:items-center mb-40 justify-center">
+        <div className="absolute inset-7 flex items-start md:items-center justify-center">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
               key={currentIndex}
