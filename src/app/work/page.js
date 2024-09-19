@@ -99,18 +99,18 @@ const ProjectPage = () => {
 
   return (
     <PageTransitionWrapper>
-      <div className="flex flex-col min-h-[80vh] overflow-scroll">
         <AnimatedTitle leftWord="Creative" rightWord="visions" />
+      <div className="flex flex-col min-h-[80vh] overflow-y-scroll overflow-x-clip scrollbar-hide relative">
 
-        <main className="flex-grow flex items-center justify-center z-[8] relative ">
           <button
             onClick={prevProject}
-            className="absolute -left-3 xl:left-20 z-20 p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors transform hover:scale-110"
+            className="absolute z-[9] top-[45%] md:top-[25%]  left-1 xl:left-20  p-1 md:p-2 bg-accent/15 rounded-full hover:bg-accent/20  transition-colors transform hover:scale-110"
             aria-label="Previous project"
           >
-            <ChevronLeftIcon className="w-8 h-8" />
+            <ChevronLeftIcon className="w-8 h-8 text-black/60" />
           </button>
 
+        <main className="flex-grow flex items-start md:justify-center justify-center z-[8] relative ">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
               key={currentIndex}
@@ -123,7 +123,7 @@ const ProjectPage = () => {
                 x: { type: "spring", stiffness: 300, damping: 30 },
                 opacity: { duration: 0.2 },
               }}
-              className="w-full max-w-4xl p-8 absolute"
+              className="w-full max-w-[350px] sm:max-w-4xl md:p-8 absolute "
             >
               {isLoading ? (
                 <ProjectSkeletonLoader />
@@ -160,10 +160,13 @@ const ProjectPage = () => {
 
                     {/* Text and button container */}
                     <div className="relative p-6 md:w-1/2 flex flex-col justify-center bg-white/50 backdrop-blur-md">
-                      <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-accent to-emerald-400">
+                      <h2 className="text-2xl md:text-4xl font-bold md:mb-4 -mb-1 bg-clip-text text-transparent bg-gradient-to-r from-accent to-emerald-400">
                         {project.name}
                       </h2>
-                      <p className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-stone-400 via-gray-700 mb-6">
+                      <p className="md:hidden block text-base md:text-xl text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-stone-400 via-gray-700 mb-6">
+                        {project.description.substring(0, 100).concat("...")}
+                      </p>
+                      <p className="hidden md:block text-base md:text-xl text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-stone-400 via-gray-700 mb-6">
                         {project.description.substring(0, 200).concat("...")}
                       </p>
                       <Drawer.Root>
@@ -191,14 +194,14 @@ const ProjectPage = () => {
             </motion.div>
           </AnimatePresence>
 
+        </main>
           <button
             onClick={nextProject}
-            className="absolute -right-3 xl:right-20 z-20 p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors transform hover:scale-110"
+            className="absolute z-[9] top-[45%] md:top-[25%] right-1 xl:right-20  p-1 md:p-2 bg-accent/15 rounded-full hover:bg-accent/20  transition-colors transform hover:scale-110"
             aria-label="Next project"
           >
-            <ChevronRightIcon className="w-8 h-8" />
+            <ChevronRightIcon className="w-8 h-8 text-black/60" />
           </button>
-        </main>
 
         <footer className="p-6 justify-center mt-10 items-center z-10 hidden lg:flex">
           <div className="flex space-x-3">

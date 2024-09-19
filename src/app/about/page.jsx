@@ -87,7 +87,7 @@ const AboutPage = () => {
   return (
     <PageTransitionWrapper>
       <PageWrapper>
-      <main ref={mainRef} className="min-h-screen overflow-y-auto">
+      <main ref={mainRef} className="md:min-h-screen overflow-y-scroll scrollbar-hide">
       <div className="container mx-auto p-4">
        
         <h1 ref={headingRef} className="text-3xl md:text-5xl font-bold text-center mb-2 md:mb-4 text-gray-800  backdrop-blur-[0.5px]">
