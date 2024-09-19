@@ -125,7 +125,7 @@ export default function Home() {
     hidden: { x: 100, opacity: 0, rotate: 10 },
     visible: {
       x: 0,
-      y: 50,
+      y: -50,
       opacity: 1,
       rotate: 0,
       transition: { duration: 0.7, ease: "easeOut", delay: 0.5 },
@@ -136,7 +136,7 @@ export default function Home() {
     hidden: { x: -100, opacity: 0, rotate: 100 },
     visible: {
       x: 0,
-      y: 50,
+      y: -50,
       opacity: 1,
       rotate: -30,
       transition: { duration: 0.7, ease: "easeOut", delay: 0.7 },
@@ -163,45 +163,41 @@ const handleClick = () => {
   return (
     <PageTransitionWrapper>
       <motion.main
-        ref={mainRef}
-        className="grid md:grid-cols-2 container mx-auto h-fit overflow-hidden"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-      >
-        
-        <div className="z-10 lg:mt-20 ">
-          <h1 ref={headingRef} className="text-4xl  font-bold mb-2">
-            <span>Hi,</span> <span>I&apos;m</span>{" "}
-            <span className="text-accent">Daniil</span>
-          </h1>
-          <motion.p
-            variants={itemVariants}
-            className="text-2xl md:text-3xl font-bold"
-          >
-            A passionate and dedicated{" "}
-            <span className="text-accent">Full Stack Developer</span> with a
-            flair for creating intuitive, high-quality websites that seamlessly
-            turn ideas into digital realities.
-          </motion.p>
-          <ResumeDropdown />
-        </div>
-        <motion.div
-          className="flex justify-center items-center absolute top-[30%] md:top-[15%] lg:top-[10%] xl:top-[15%] right-0 md:right-[5%] lg:right-[10%] xl:right-[15%] z-0 "
-          variants={imageVariants}
-        >
-          <motion.div
-            className="absolute top-[10%] left-[30%] -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] border-4 border-accent rounded-full"
-            variants={circleVariants}
-            custom={0}
-          />
-          <motion.div
-            className="absolute top-[14%] left-[36%] -translate-x-1/2 -translate-y-1/2 w-[230px] h-[230px] border-8 border-white rounded-full bg-accent"
-            variants={circleVariants}
-            custom={1}
-          />
-          <motion.div 
+    ref={mainRef}
+    className="grid md:grid-cols-2 container mx-auto min-h-screen overflow-hidden fixed "
+    variants={containerVariants}
+    initial="hidden"
+    animate="visible"
+    exit="exit"
+  >
+    <div className="z-[5px] lg:mt-20 p-4">
+      <h1 ref={headingRef} className="text-4xl font-bold mb-2">
+        <span>Hi,</span> <span>I'm</span>{" "}
+        <span className="text-accent">Daniil</span>
+      </h1>
+      <motion.p variants={itemVariants} className="text-2xl md:text-3xl font-bold">
+        A passionate and dedicated{" "}
+        <span className="text-accent">Full Stack Developer</span> with a
+        flair for creating intuitive, high-quality websites that seamlessly
+        turn ideas into digital realities.
+      </motion.p>
+      <ResumeDropdown />
+    </div>
+    <motion.div
+      className="flex justify-center items-center absolute top-[30%] md:top-[15%] lg:top-[10%] xl:top-[15%] right-0 md:right-[5%] lg:right-[10%] xl:right-[15%] z-0"
+      variants={imageVariants}
+    >
+      <motion.div
+        className="absolute top-[10%] left-[30%] -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] border-4 border-accent rounded-full"
+        variants={circleVariants}
+        custom={0}
+      />
+      <motion.div
+        className="absolute top-[14%] left-[36%] -translate-x-1/2 -translate-y-1/2 w-[230px] h-[230px] border-8 border-white rounded-full bg-accent"
+        variants={circleVariants}
+        custom={1}
+      />
+      <motion.div 
         className="absolute top-[18%] left-[42%] -translate-x-1/2 -translate-y-1/2 w-[180px] h-[180px] border-[12px] border-white rounded-full"
         variants={circleVariants}
         custom={2}
@@ -211,43 +207,40 @@ const handleClick = () => {
         variants={circleVariants}
         custom={3}
       />
-          <div ref={imageRef} className="select-none">
-            <Image
-              src="/file.webp"
-              alt="image"
-              width={400}
-              height={400}
-              priority
-              className="rounded-full z-1 select-none overflow pointer-events-none"
-            />
-          </div>
-        </motion.div>
-        <motion.button
-        onClick={handleClick}
-          ref={containerRef}
-          variants={leftImageVariants}
-          className="absolute bottom-[25%] hidden md:block"
-        >
-          <div
-            ref={spinRef}
-            className="spin-container  left-[15%] w-[100px] h-[100px] cursor-pointer"
-          >
-            <Image
-              src="/rounded-text.png"
-              alt="Spinning text"
-              fill
-              priority
-              className="invert z-1 select-none  pointer-events-none"
-            />
-          </div>
-          <div>
-            <ArrowRight
-              ref={arrowRef}
-              className="icon absolute  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40px] h-[40px]"
-            />
-          </div>
-        </motion.button>
-      </motion.main>
+      <div ref={imageRef} className="select-none">
+        <Image
+          src="/file.webp"
+          alt="image"
+          width={400}
+          height={400}
+          priority
+          className="rounded-full z-1 select-none pointer-events-none"
+        />
+      </div>
+    </motion.div>
+    <motion.button
+      onClick={handleClick}
+      ref={containerRef}
+      variants={leftImageVariants}
+      className="absolute bottom-[25%] hidden md:block left-[15%] w-[100px] h-[100px] cursor-pointer"
+    >
+      <div ref={spinRef} className="spin-container w-full h-full relative">
+        <Image
+          src="/rounded-text.png"
+          alt="Spinning text"
+          fill
+          priority
+          className="invert z-1 select-none pointer-events-none"
+        />
+      </div>
+      <div>
+        <ArrowRight
+          ref={arrowRef}
+          className="icon absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40px] h-[40px]"
+        />
+      </div>
+    </motion.button>
+  </motion.main>
     </PageTransitionWrapper>
   );
 }
