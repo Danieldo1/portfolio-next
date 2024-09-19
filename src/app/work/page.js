@@ -99,18 +99,10 @@ const ProjectPage = () => {
 
   return (
     <PageTransitionWrapper>
-        <AnimatedTitle leftWord="Creative" rightWord="visions" />
-      <div className="flex flex-col min-h-[80vh] overflow-y-scroll overflow-x-clip scrollbar-hide relative">
-
-          <button
-            onClick={prevProject}
-            className="absolute z-[9] top-[40%] md:top-[25%]  left-1 xl:left-20  p-1 md:p-2 bg-accent/15 rounded-full hover:bg-accent/20  transition-colors transform hover:scale-110"
-            aria-label="Previous project"
-          >
-            <ChevronLeftIcon className="w-8 h-8 text-black/60" />
-          </button>
-
-        <main className="flex-grow flex items-start md:justify-center justify-center z-[8] relative ">
+    <div className="flex flex-col h-screen">
+      <AnimatedTitle leftWord="Creative" rightWord="visions" />
+      <div className="flex-grow relative overflow-hidden">
+        <div className="absolute inset-7 flex items-start md:items-center mb-40 justify-center">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
               key={currentIndex}
@@ -123,7 +115,7 @@ const ProjectPage = () => {
                 x: { type: "spring", stiffness: 300, damping: 30 },
                 opacity: { duration: 0.2 },
               }}
-              className="w-full max-w-[350px] sm:max-w-4xl md:p-8 absolute "
+              className="w-full max-w-[350px] sm:max-w-4xl md:p-8 absolute"
             >
               {isLoading ? (
                 <ProjectSkeletonLoader />
@@ -133,12 +125,11 @@ const ProjectPage = () => {
                     key={index}
                     variants={cardVariants}
                     whileHover="hover"
-                    className={`bg-white/50 lg:h-[400px]  backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row ${
+                    className={`bg-white/50 lg:h-[400px] backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row ${
                       index !== currentIndex ? "hidden" : ""
                     }`}
-                    // style={{ height: '400px' }}
                   >
-                    {/* Image container with gradient overlay */}
+                    {/* Image container */}
                     <motion.div
                       onHoverStart={() => setIsHovering(true)}
                       onHoverEnd={() => setIsHovering(false)}
@@ -146,15 +137,14 @@ const ProjectPage = () => {
                     >
                       <motion.div
                         variants={imageVariants}
-                        className="w-full h-full "
+                        className="w-full h-full"
                       >
                         <img
                           src={project.images[imageIndex]}
                           alt={project.name}
-                          className="w-full h-48 md:h-64 lg:h-full object-cover "
+                          className="w-full h-40 sm:h-64 md:h-full object-cover"
                         />
                       </motion.div>
-                      {/* Divider gradient */}
                       <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-transparent via-white/10 to-white opacity-60" />
                     </motion.div>
 
@@ -176,10 +166,10 @@ const ProjectPage = () => {
                           />
                         </Drawer.Trigger>
                         <Drawer.Portal>
-                          <Drawer.Overlay className="fixed inset-0 bg-black/50 " />
+                          <Drawer.Overlay className="fixed inset-0 bg-black/50" />
                           <Drawer.Content className="bg-white flex flex-col z-[100] fixed bottom-0 left-0 right-0 max-h-[93%] rounded-t-[10px] shadow-[0px_-10px_15px_5px_#3C3B3B69]">
                             <div className="w-[30%] h-2 bg-slate-400 rounded-xl mx-auto my-3 cursor-grabbing" />
-                            <div className=" w-full  mx-auto flex flex-col overflow-auto p-4 rounded-t-[10px] scrollbar-hide">
+                            <div className="w-full mx-auto flex flex-col overflow-auto p-4 rounded-t-[10px] scrollbar-hide">
                               <DetailedProjectDrawer
                                 project={selectedProject}
                               />
@@ -193,34 +183,43 @@ const ProjectPage = () => {
               )}
             </motion.div>
           </AnimatePresence>
+        </div>
 
-        </main>
-          <button
-            onClick={nextProject}
-            className="absolute z-[9] top-[40%] md:top-[25%] right-1 xl:right-20  p-1 md:p-2 bg-accent/15 rounded-full hover:bg-accent/20  transition-colors transform hover:scale-110"
-            aria-label="Next project"
-          >
-            <ChevronRightIcon className="w-8 h-8 text-black/60" />
-          </button>
-
-        <footer className="p-6 justify-center mt-10 items-center z-10 hidden lg:flex">
-          <div className="flex space-x-3">
-            {projects.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-4 h-4 rounded-full transition-all duration-300 ${
-                  index === currentIndex
-                    ? "bg-accent scale-125"
-                    : "bg-gray-600 hover:bg-gray-400"
-                }`}
-                aria-label={`Go to project ${index + 1}`}
-              />
-            ))}
-          </div>
-        </footer>
+        {/* Navigation buttons */}
+        <button
+          onClick={prevProject}
+          className="absolute z-[9] top-[20%] md:top-1/2 left-1 xl:left-20 p-1 md:p-2 bg-accent/15 rounded-full hover:bg-accent/20 transition-colors transform hover:scale-110"
+          aria-label="Previous project"
+        >
+          <ChevronLeftIcon className="w-8 h-8 text-black/60" />
+        </button>
+        <button
+          onClick={nextProject}
+          className="absolute z-[9] top-[20%] md:top-1/2 right-1 xl:right-20 p-1 md:p-2 bg-accent/15 rounded-full hover:bg-accent/20 transition-colors transform hover:scale-110"
+          aria-label="Next project"
+        >
+          <ChevronRightIcon className="w-8 h-8 text-black/60" />
+        </button>
       </div>
-    </PageTransitionWrapper>
+
+      <footer className="p-6 justify-center mt-auto items-center z-10 hidden lg:flex">
+        <div className="flex space-x-3">
+          {projects.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentIndex(index)}
+              className={`w-4 h-4 rounded-full transition-all duration-300 ${
+                index === currentIndex
+                  ? "bg-accent scale-125"
+                  : "bg-gray-600 hover:bg-gray-400"
+              }`}
+              aria-label={`Go to project ${index + 1}`}
+            />
+          ))}
+        </div>
+      </footer>
+    </div>
+  </PageTransitionWrapper>
   );
 };
 

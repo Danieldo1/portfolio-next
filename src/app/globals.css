@@ -13,6 +13,9 @@
   }
   
 }
+.someclass{
+  height: -webkit-fill-available;
+}
 .translate-z-0 {
   transform: translateZ(0px);
 }
