@@ -104,7 +104,7 @@ const ProjectPage = () => {
 
           <button
             onClick={prevProject}
-            className="absolute z-[9] top-[45%] md:top-[25%]  left-1 xl:left-20  p-1 md:p-2 bg-accent/15 rounded-full hover:bg-accent/20  transition-colors transform hover:scale-110"
+            className="absolute z-[9] top-[40%] md:top-[25%]  left-1 xl:left-20  p-1 md:p-2 bg-accent/15 rounded-full hover:bg-accent/20  transition-colors transform hover:scale-110"
             aria-label="Previous project"
           >
             <ChevronLeftIcon className="w-8 h-8 text-black/60" />
@@ -133,7 +133,7 @@ const ProjectPage = () => {
                     key={index}
                     variants={cardVariants}
                     whileHover="hover"
-                    className={`bg-white/50 lg:h-[400px] backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row ${
+                    className={`bg-white/50 lg:h-[400px]  backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row ${
                       index !== currentIndex ? "hidden" : ""
                     }`}
                     // style={{ height: '400px' }}
@@ -151,7 +151,7 @@ const ProjectPage = () => {
                         <img
                           src={project.images[imageIndex]}
                           alt={project.name}
-                          className="w-full h-64 md:h-full object-cover "
+                          className="w-full h-48 md:h-64 lg:h-full object-cover "
                         />
                       </motion.div>
                       {/* Divider gradient */}
@@ -197,7 +197,7 @@ const ProjectPage = () => {
         </main>
           <button
             onClick={nextProject}
-            className="absolute z-[9] top-[45%] md:top-[25%] right-1 xl:right-20  p-1 md:p-2 bg-accent/15 rounded-full hover:bg-accent/20  transition-colors transform hover:scale-110"
+            className="absolute z-[9] top-[40%] md:top-[25%] right-1 xl:right-20  p-1 md:p-2 bg-accent/15 rounded-full hover:bg-accent/20  transition-colors transform hover:scale-110"
             aria-label="Next project"
           >
             <ChevronRightIcon className="w-8 h-8 text-black/60" />
