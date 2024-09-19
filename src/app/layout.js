@@ -82,7 +82,7 @@ export default function RootLayout({ children }) {
       <div className="flex flex-col ">
         <Header className="" />
         <main className="">
-          <div className="container mx-auto px-4 py-8 ">
+          <div className="container mx-auto px-4 py-2 md:py-8 ">
             {children}
           </div>
         </main>

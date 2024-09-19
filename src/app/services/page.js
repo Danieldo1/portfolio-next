@@ -98,13 +98,14 @@ const ServiceCard = ({ service, index }) => {
       },
     },
     tap: {
-      opacity: 0.30,
+      opacity: 0.50,
       scale: 0.95,
       transition: {
         type: "spring",
         stiffness: 400,
         damping: 5,
         duration: 0.55,
+        when: "beforeChildren",
       },
       onComplete: () => {
         handleTapEnd();
@@ -152,7 +153,7 @@ const ServiceCard = ({ service, index }) => {
 
   return (
     <motion.div
-      className={`${service.span} ${service.color} ${shadowColor} shadow-lg  p-6 rounded-2xl overflow-hidden relative cursor-help group`}
+      className={`${service.span} ${service.color} ${shadowColor} shadow-[0_0_10px]  p-6 rounded-2xl overflow-hidden relative cursor-help group`}
       variants={cardVariants}
       // onTapEnd={handleTapEnd}
       initial="hidden"
@@ -191,8 +192,8 @@ const BentoBox = () => {
       <div className="flex flex-col h-fit overflow-hidden relative ">
         <AnimatedTitle leftWord="My" rightWord="services" />
         
-        <div className="">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 max-w-5xl mx-auto pb-10 md:mb-0">
+        <div className=" max-h-[calc(100vh-315px)]  overflow-x-scroll scrollbar-hide mx-5">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 sm:gap-6 max-w-5xl mx-5 mt-5 pb-10 md:mb-0 ">
             {services.map((service, index) => (
               <ServiceCard key={index} service={service} index={index} />
             ))}

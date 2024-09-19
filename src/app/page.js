@@ -134,7 +134,7 @@ export default function Home() {
     hidden: { x: -100, opacity: 0, rotate: 100 },
     visible: {
       x: 0,
-      y: -50,
+      y: -70,
       opacity: 1,
       rotate: -30,
       transition: { duration: 0.7, ease: "easeOut", delay: 0.7 },
@@ -162,7 +162,7 @@ export default function Home() {
     <PageTransitionWrapper>
       <motion.main
         ref={mainRef}
-        className="grid md:grid-cols-2 container mx-auto min-h-screen overflow-hidden absolute md:fixed "
+        className="grid md:grid-cols-2 max-w-8xl mx-auto min-h-screen fixed overflow-hidden"
         variants={containerVariants}
         initial="hidden"
         animate="visible"

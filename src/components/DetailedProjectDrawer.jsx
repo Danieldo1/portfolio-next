@@ -154,9 +154,16 @@ const DetailedProjectDrawer = ({ project }) => {
           className="flex flex-wrap gap-2 mb-8"
         >
           {project.tags.map((tech) => (
-            <Badge key={tech.name} className={`${tech.color}`}>
+            <motion.div 
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+
+            key={tech.name}>
+
+            <Badge  className={`${tech.color} select-none`}>
               {tech.name}
             </Badge>
+            </motion.div>
           ))}
         </motion.div>
 

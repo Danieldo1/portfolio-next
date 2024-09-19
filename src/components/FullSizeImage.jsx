@@ -47,8 +47,8 @@ const FullSizeImage = ({ selectedImage, closeLightbox }) => {
     >
       <div className="relative w-full h-full max-w-4xl max-h-[90vh] flex items-center justify-center">
         <div
-          className="relative w-full h-0"
-          style={{ paddingBottom: `${(1 / imageAspectRatio) * 100}%` }}
+          className="relative w-full "
+          // style={{ paddingBottom: `${(1 / imageAspectRatio) * 100}%` }}
         >
           {isLoading && (
             <div className="absolute inset-0 flex items-center justify-center">

@@ -132,6 +132,7 @@ const ContactPage = () => {
       <div className="min-h-fit mb-16">
         <div className="rounded-full absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b from-purple-500/20 via-pink-300/20 to-transparent z-0 lg:w-[800px] lg:h-[800px]" />
         <div className="relative z-[8px] pt-10 px-4 ">
+          <a href="#">Hello</a>
           <motion.div
             initial="hidden"
             animate="visible"

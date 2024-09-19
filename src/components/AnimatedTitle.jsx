@@ -49,7 +49,7 @@ const AnimatedTitle = ({leftWord, rightWord}) => {
       initial="hidden"
       animate="visible"
     >
-      <div className="flex justify-center items-center overflow-hidden">
+      <div className="flex justify-center items-center ">
         <div className="relative inline-flex">
           <motion.span 
             className="mr-1"
