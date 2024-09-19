@@ -39,7 +39,7 @@ const AnimatedTitle = ({leftWord, rightWord}) => {
   
     return (
       <motion.h1 
-        className="text-3xl md:text-5xl font-bold text-center mb-2 md:mb-4 text-gray-800 p-4 relative"
+        className="text-3xl md:text-5xl font-bold text-center  md:mb-4 text-gray-800 p-4 relative"
         variants={containerVariants}
         initial="hidden"
         animate="visible"

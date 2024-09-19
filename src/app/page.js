@@ -8,6 +8,7 @@ import gsap from "gsap";
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import ResumeDropdown from "@/components/ResumeDropdown";
+import { useRouter } from "next/navigation";
 
 
 
@@ -18,6 +19,8 @@ export default function Home() {
   const arrowRef = useRef(null);
   const containerRef = useRef(null);
   const spinRef = useRef(null);
+
+  const router = useRouter();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -153,7 +156,9 @@ export default function Home() {
     }),
   };
 
-
+const handleClick = () => {
+      router.push('/work')
+  };
 
   return (
     <PageTransitionWrapper>
@@ -217,7 +222,8 @@ export default function Home() {
             />
           </div>
         </motion.div>
-        <motion.div
+        <motion.button
+        onClick={handleClick}
           ref={containerRef}
           variants={leftImageVariants}
           className="absolute bottom-[25%] hidden md:block"
@@ -240,7 +246,7 @@ export default function Home() {
               className="icon absolute  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40px] h-[40px]"
             />
           </div>
-        </motion.div>
+        </motion.button>
       </motion.main>
     </PageTransitionWrapper>
   );

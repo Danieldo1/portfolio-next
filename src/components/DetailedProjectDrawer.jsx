@@ -6,6 +6,8 @@ import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import ProjectImageGrid from "./Thumbnails";
+import FullSizeImage from "./FullSizeImage";
 
 const DetailedProjectDrawer = ({ project }) => {
   const [selectedImage, setSelectedImage] = useState(project.images[0]);
@@ -71,7 +73,7 @@ const DetailedProjectDrawer = ({ project }) => {
           <motion.div
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.9 }}
-            className="relative w-full h-0 pb-[90.25%] md:pb-[75%] lg:pb-[56.25%] mb-2 cursor-zoom-in rounded-lg z-1 "
+            className="relative w-full aspect-auto h-0 pb-[90.25%] md:pb-[75%] lg:pb-[56.25%] mb-2 cursor-zoom-in rounded-lg z-1 "
             onClick={openLightbox}
           >
             <Image
@@ -80,58 +82,21 @@ const DetailedProjectDrawer = ({ project }) => {
               layout="fill"
               objectFit="cover"
               className="rounded-lg"
+              unoptimized={true}
             />
           </motion.div>
-          <div
-            className={`grid grid-cols-${project?.images?.length || 5 } gap-2 md:gap-4 justify-items-center w-full z-0`}
-          >
-            
-            {project.images.map((image, index) => (
-              <motion.div
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                key={index}
-                className={`relative h-16 aspect-square cursor-pointer ${
-                  image === selectedImage ? "ring-2 ring-accent rounded" : ""
-                }`}
-                onClick={() => setSelectedImage(image)}
-              >
-                <Image
-                  src={image}
-                  alt={`${project.name} screenshot ${index + 1}`}
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded "
-                />
-              </motion.div>
-            ))}
-          </div>
+          <ProjectImageGrid
+            project={project}
+            selectedImage={selectedImage}
+            setSelectedImage={setSelectedImage}
+          />
         </motion.div>
         <AnimatePresence>
           {lightboxOpen && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
-              onClick={closeLightbox}
-            >
-              <div className="relative max-w-4xl max-h-[90vh] w-full h-full rounded-md">
-                <Image
-                  src={selectedImage}
-                  alt="Enlarged project image"
-                  layout="fill"
-                  objectFit="contain"
-                  className="rounded-md"
-                />
-                <button
-                  onClick={closeLightbox}
-                  className="absolute top-4 right-4 text-white text-xl"
-                >
-                  <XIcon />
-                </button>
-              </div>
-            </motion.div>
+            <FullSizeImage
+            selectedImage={selectedImage}
+            closeLightbox={closeLightbox}
+          />
           )}
         </AnimatePresence>
 
@@ -141,8 +106,11 @@ const DetailedProjectDrawer = ({ project }) => {
             {project.description}
           </DrawerDescription>
         </motion.div>
-{/* Buttons */}
-        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row mb-4 gap-4">
+        {/* Buttons */}
+        <motion.div
+          variants={itemVariants}
+          className="flex flex-col sm:flex-row mb-4 gap-4"
+        >
           <Button
             asChild
             className="flex items-center gap-2 bg-black hover:scale-105 transition duration-300 "
@@ -175,8 +143,16 @@ const DetailedProjectDrawer = ({ project }) => {
 
         {/* Technologies Block */}
 
-        <motion.h2 variants={itemVariants} className="text-2xl font-semibold mb-4">Technologies Used</motion.h2>
-        <motion.div variants={itemVariants}className="flex flex-wrap gap-2 mb-8">
+        <motion.h2
+          variants={itemVariants}
+          className="text-2xl font-semibold mb-4"
+        >
+          Technologies Used
+        </motion.h2>
+        <motion.div
+          variants={itemVariants}
+          className="flex flex-wrap gap-2 mb-8"
+        >
           {project.tags.map((tech) => (
             <Badge key={tech.name} className={`${tech.color}`}>
               {tech.name}
@@ -184,10 +160,11 @@ const DetailedProjectDrawer = ({ project }) => {
           ))}
         </motion.div>
 
-
         {/* Key Features */}
-        <motion.div 
-          variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+        <motion.div
+          variants={itemVariants}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8"
+        >
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
