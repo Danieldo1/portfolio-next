@@ -142,7 +142,7 @@ const ProjectPage = () => {
                         <img
                           src={project.images[imageIndex]}
                           alt={project.name}
-                          className="w-full h-40 sm:h-64 md:h-full object-cover"
+                          className="w-full h-64 md:h-full object-cover"
                         />
                       </motion.div>
                       <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-transparent via-white/10 to-white opacity-60" />

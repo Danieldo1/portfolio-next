@@ -128,7 +128,7 @@ const ContactPage = () => {
   return (
     <PageTransitionWrapper>
       <div className="rounded-full absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b from-purple-500/20 via-pink-300/20 to-transparent z-0 lg:w-[800px] lg:h-[800px]" />
-      <div className="flex items-center justify-center h-[calc(60vh-90px)] ">
+      <div className="flex items-center justify-center h-[calc(65vh-90px)]  mb-20 ">
         <motion.div
           initial="hidden"
           animate="visible"
