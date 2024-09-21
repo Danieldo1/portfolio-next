@@ -1,5 +1,7 @@
+'use client'
 import Link from "next/link"
 import Socials from "./Socials"
+import AnimatedTitle from "./AnimatedTitle"
 
 
 const Header = () => {
@@ -9,8 +11,9 @@ const Header = () => {
       <div className="flex flex-col lg:flex-row justify-between items-center gap-y-2 md:gap-y-4 pt-8">
         {/* logo */}
         <Link href="/" className="flex items-center gap-x-2 ">
-          <span className='text-3xl font-black '>Daniil</span>
-          <span className='text-3xl text-accent'>Speranskii</span>
+          {/* <span className='text-3xl font-black '>Daniil</span>
+          <span className='text-3xl text-accent'>Speranskii</span> */}
+          <AnimatedTitle leftWord="Daniil" rightWord="Speranskii" />
         </Link>
 
         {/* socials */}

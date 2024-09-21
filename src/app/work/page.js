@@ -99,7 +99,7 @@ const ProjectPage = () => {
 
   return (
     <PageTransitionWrapper>
-    <div className="flex flex-col h-[calc(90vh-4rem)]">
+    <div className="flex flex-col h-[calc(90vh-4rem)] lg:pt-10">
       <AnimatedTitle leftWord="Creative" rightWord="visions" />
       <div className="flex-grow relative overflow-hidden min-h-fit">
         <div className="absolute inset-0 min-h-fit flex items-start justify-center">

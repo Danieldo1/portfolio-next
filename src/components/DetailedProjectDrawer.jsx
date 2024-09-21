@@ -1,13 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Github, ExternalLink, XIcon } from "lucide-react";
 import Image from "next/image";
 import { DrawerDescription, DrawerTitle } from "./ui/drawer";
-import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
-import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
+import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import ProjectImageGrid from "./Thumbnails";
 import FullSizeImage from "./FullSizeImage";
+import { useInView } from "react-intersection-observer";
+
+const useScrollReveal = () => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    triggerOnce:false,
+    threshold: 0.28,
+    rootMargin: "0px 0px -150px 200px",
+    delay: 0.1
+   
+  });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden");
+    }
+  }, [controls, inView]);
+
+  return [ref, controls];
+};
+
 
 const DetailedProjectDrawer = ({ project }) => {
   const [selectedImage, setSelectedImage] = useState(project.images[0]);
@@ -53,15 +74,24 @@ const DetailedProjectDrawer = ({ project }) => {
     },
   };
 
+  const [titleRef, titleControls] = useScrollReveal();
+  const [imagesRef, imagesControls] = useScrollReveal();
+  const [descriptionRef, descriptionControls] = useScrollReveal();
+  const [buttonsRef, buttonsControls] = useScrollReveal();
+  const [technologiesRef, technologiesControls] = useScrollReveal();
+  const [featuresRef, featuresControls] = useScrollReveal();
+
   return (
     <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      className="md:w-[90%] lg:w-[80%] xl:w-[70%] mx-auto"
-    >
+    variants={containerVariants}
+    className="md:w-[90%] lg:w-[80%] xl:w-[70%] mx-auto">
       {/* Title */}
-      <motion.div variants={itemVariants}>
+      <motion.div
+        ref={titleRef}
+        initial="hidden"
+        animate={titleControls}
+        variants={itemVariants}
+      >
         <DrawerTitle className="text-3xl font-bold leading-tight tracking-tight mb-4">
           {project.name}
         </DrawerTitle>
@@ -69,7 +99,13 @@ const DetailedProjectDrawer = ({ project }) => {
 
       {/* Main images and thumb */}
       <div className="p-4 pb-0">
-        <motion.div variants={imageVariants} className="mb-4">
+        <motion.div
+          ref={imagesRef}
+          initial="hidden"
+          animate={imagesControls}
+          variants={imageVariants}
+          className="mb-4"
+        >
           <motion.div
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.9 }}
@@ -101,18 +137,26 @@ const DetailedProjectDrawer = ({ project }) => {
         </AnimatePresence>
 
         {/* Description */}
-        <motion.div variants={itemVariants}>
+        <motion.div
+          ref={descriptionRef}
+          initial="hidden"
+          animate={descriptionControls}
+          variants={itemVariants}
+        >
           <DrawerDescription className="mb-4 text-black text-pretty text-base font-medium">
             {project.description}
           </DrawerDescription>
         </motion.div>
         {/* Buttons */}
         <motion.div
+          ref={buttonsRef}
+          initial="hidden"
+          animate={buttonsControls}
           variants={itemVariants}
           className="flex flex-col sm:flex-row mb-4 gap-4"
         >
           <motion.button
-          onClick={() => window.open(project.project_link, "_blank")}
+            onClick={() => window.open(project.project_link, "_blank")}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.9 }}
             className="flex items-center gap-2 bg-white text-black text-center border-[1px] border-black justify-center px-4 py-2 rounded-lg transition duration-300 hover:bg-gray-100 "
@@ -132,26 +176,27 @@ const DetailedProjectDrawer = ({ project }) => {
         </motion.div>
 
         {/* Technologies Block */}
-
-        <motion.h2
-          variants={itemVariants}
-          className="text-2xl font-semibold mb-4"
-        >
-          Technologies Used
-        </motion.h2>
         <motion.div
+          ref={technologiesRef}
+          initial="hidden"
+          animate={technologiesControls}
           variants={itemVariants}
-          className="flex flex-wrap gap-2 mb-8"
         >
-          {project.tags.map((tech) => (
-            <Badge key={tech.name} className={`${tech.color} select-none`}>
-              {tech.name}
-            </Badge>
-          ))}
+          <h2 className="text-2xl font-semibold mb-4">Technologies Used</h2>
+          <div className="flex flex-wrap gap-2 mb-8">
+            {project.tags.map((tech) => (
+              <Badge key={tech.name} className={`${tech.color} select-none`}>
+                {tech.name}
+              </Badge>
+            ))}
+          </div>
         </motion.div>
 
         {/* Key Features */}
         <motion.div
+          ref={featuresRef}
+          initial="hidden"
+          animate={featuresControls}
           variants={itemVariants}
           className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8"
         >
@@ -183,9 +228,6 @@ const DetailedProjectDrawer = ({ project }) => {
           </motion.div>
         </motion.div>
       </div>
-      {/* <DrawerFooter>
-        
-      </DrawerFooter> */}
     </motion.div>
   );
 };
