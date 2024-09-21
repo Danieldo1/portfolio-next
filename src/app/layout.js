@@ -74,6 +74,7 @@ export default function RootLayout({ children }) {
           type="image/<generated>"
           sizes="<generated>"
         />
+        <meta name="google-site-verification" content="OpDxknhFglPAZkAVun9rqd3xP4kQVifteGscWOSvpuI" />
         <script defer src="https://cloud.umami.is/script.js" data-website-id="16e3b872-f9fe-4afd-a836-8004484c0af0"></script>
       </head>
     <body
