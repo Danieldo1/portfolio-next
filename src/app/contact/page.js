@@ -55,7 +55,7 @@ const ContactPage = () => {
       transition: {
         duration: 0.5,
         type: "spring",
-        stiffness: 300,
+        stiffness: 500,
         // delay: 1.2,
       },
     },
@@ -130,7 +130,7 @@ const ContactPage = () => {
 
   return (
     <PageTransitionWrapper>
-      <div className="min-h-fit mb-20 w-full overflow-hidden relative">
+      <div className=" pb-20 w-full h-full overflow-clip relative">
         <div className="rounded-full absolute top-1/2 lg:top-[70%] -translate-y-1/2 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b from-purple-500/20 via-pink-300/20 to-transparent z-0 lg:w-[800px] lg:h-[800px]" />
         <div className="relative z-[8px] pt-0 lg:pt-10 px-4 ">
           <motion.div
@@ -275,7 +275,7 @@ const ContactPage = () => {
         >
           <motion.button
             variants={buttonVariants}
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 0.8 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleTelegramClick}
             className="w-full h-40 bg-white/20 border-[1px] border-b-4 border-accent rounded-xl flex flex-col justify-evenly items-center"
@@ -305,7 +305,7 @@ const ContactPage = () => {
 
           <motion.button
             variants={buttonVariants}
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 0.8 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleLocationClick}
             className="w-full h-40 bg-white/20 border-[1px] border-b-4 border-accent rounded-xl flex flex-col justify-evenly items-center"
