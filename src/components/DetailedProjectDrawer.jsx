@@ -31,9 +31,14 @@ const useScrollReveal = () => {
 
 
 const DetailedProjectDrawer = ({ project }) => {
-  const [selectedImage, setSelectedImage] = useState(project.images[0]);
+  const [selectedImage, setSelectedImage] = useState(project?.images[0] || null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
-
+  const [titleRef, titleControls] = useScrollReveal();
+  const [imagesRef, imagesControls] = useScrollReveal();
+  const [descriptionRef, descriptionControls] = useScrollReveal();
+  const [buttonsRef, buttonsControls] = useScrollReveal();
+  const [technologiesRef, technologiesControls] = useScrollReveal();
+  const [featuresRef, featuresControls] = useScrollReveal();
   const openLightbox = () => {
     setLightboxOpen(true);
   };
@@ -74,12 +79,7 @@ const DetailedProjectDrawer = ({ project }) => {
     },
   };
 
-  const [titleRef, titleControls] = useScrollReveal();
-  const [imagesRef, imagesControls] = useScrollReveal();
-  const [descriptionRef, descriptionControls] = useScrollReveal();
-  const [buttonsRef, buttonsControls] = useScrollReveal();
-  const [technologiesRef, technologiesControls] = useScrollReveal();
-  const [featuresRef, featuresControls] = useScrollReveal();
+
 
   return (
     <motion.div
