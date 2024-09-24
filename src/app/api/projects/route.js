@@ -3,6 +3,7 @@ import Project from "@/models/projectModals";
 import dbConnect from "@/utils/connectDB";
 import { NextResponse } from "next/server";
 
+export const dynamic = 'force-static'
 
 export async function GET() {
     await dbConnect();

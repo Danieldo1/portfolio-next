@@ -1,10 +1,12 @@
-const mongoose = require('mongoose');
-require('dotenv').config();
+const mongoose = require("mongoose");
+require("dotenv").config();
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
 if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable inside .env');
+  throw new Error(
+    "Please define the MONGODB_URI environment variable inside .env"
+  );
 }
 
 // Define the Project schema
@@ -16,12 +18,11 @@ const projectSchema = new mongoose.Schema({
   source_code_link: { type: String, required: true },
   project_link: { type: String, required: true },
   key_features: [String],
-  technical_highlights: [String]
+  technical_highlights: [String],
 });
 
 // Create the Project model
-const Project = mongoose.model('Project', projectSchema);
-
+const Project = mongoose.model("Project", projectSchema);
 
 const projectsData = [
   {
@@ -71,12 +72,11 @@ const projectsData = [
       "JavaScript for client-side functionality and enhanced user experience",
     ],
     images: [
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/449728dd-2d8e-4148-3f5c-dd15993e8700/cusstompublic',
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/760f2d8c-6bc5-49ba-2a33-2e4fd91a6100/cusstompublic',
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/be79232a-c2ed-491b-9dee-64c5ea016800/cusstompublic',
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/a15c0b38-7837-4ef2-7905-1dfdd87cf600/cusstompublic',
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/1ab58aee-ee5f-41bc-0eb8-fe5d6331ce00/cusstompublic'
-
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/449728dd-2d8e-4148-3f5c-dd15993e8700/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/760f2d8c-6bc5-49ba-2a33-2e4fd91a6100/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/be79232a-c2ed-491b-9dee-64c5ea016800/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/a15c0b38-7837-4ef2-7905-1dfdd87cf600/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/1ab58aee-ee5f-41bc-0eb8-fe5d6331ce00/cusstompublic",
     ],
     source_code_link: "https://github.com/Danieldo1/make-a-link",
     project_link: "https://uni-links.vercel.app/",
@@ -129,10 +129,10 @@ const projectsData = [
       },
     ],
     images: [
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/21ea5547-9c7a-4b66-1adb-fb31fae79600/cusstompublic',
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/8c2dc080-9bc9-4bfc-9b13-3d53d5564000/cusstompublic',
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/02047e91-c739-4b7a-408f-8f16ffd68300/cusstompublic',
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/47b50247-a778-4207-763f-334972b25100/cusstompublic'
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/21ea5547-9c7a-4b66-1adb-fb31fae79600/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/8c2dc080-9bc9-4bfc-9b13-3d53d5564000/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/02047e91-c739-4b7a-408f-8f16ffd68300/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/47b50247-a778-4207-763f-334972b25100/cusstompublic",
     ],
     source_code_link: "https://github.com/Danieldo1/style-sync",
     project_link: "https://style-sync.vercel.app/",
@@ -208,14 +208,13 @@ const projectsData = [
       "Zod for robust data validation and type safety",
     ],
     images: [
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/366d15bd-e739-411d-037c-feb2de47dc00/cusstompublic',
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/33ede2ad-fa56-4e70-991f-6b7ac2118300/cusstompublic',
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/10dc9748-04cf-47ba-f723-066b096d7400/cusstompublic',
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/5e8e8988-d67a-4b33-0e9f-5f822ebedd00/cusstompublic',
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/4eb4f700-7654-47e1-d1d4-c924d2070600/cusstompublic',
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/219e8771-16fe-4fbe-2327-83a9633b9e00/cusstompublic',
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/e6c93572-108e-4cf2-9c74-994c9968bd00/cusstompublic'
-        
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/366d15bd-e739-411d-037c-feb2de47dc00/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/33ede2ad-fa56-4e70-991f-6b7ac2118300/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/10dc9748-04cf-47ba-f723-066b096d7400/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/5e8e8988-d67a-4b33-0e9f-5f822ebedd00/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/4eb4f700-7654-47e1-d1d4-c924d2070600/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/219e8771-16fe-4fbe-2327-83a9633b9e00/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/e6c93572-108e-4cf2-9c74-994c9968bd00/cusstompublic",
     ],
     source_code_link: "https://github.com/Danieldo1/e-depo-admin",
     project_link: "https://pet-plus-us.vercel.app/",
@@ -275,9 +274,9 @@ const projectsData = [
       "Cloudinary for optimized image storage and manipulation",
     ],
     images: [
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/68035df1-92f0-4c46-ab00-47444ab45800/cusstompublic',
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/e44467dd-2da5-4215-b5be-aae6c6333500/cusstompublic',
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/12cbf265-eb64-499f-cf52-d4ee2fc8f400/cusstompublic'
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/68035df1-92f0-4c46-ab00-47444ab45800/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/e44467dd-2da5-4215-b5be-aae6c6333500/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/12cbf265-eb64-499f-cf52-d4ee2fc8f400/cusstompublic",
     ],
     source_code_link: "https://github.com/Danieldo1/edit-it",
     project_link: "https://alter-image.vercel.app/",
@@ -334,16 +333,74 @@ const projectsData = [
       "Sortable.js implementation for drag-and-drop menu organization",
     ],
     images: [
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/d6542f1d-cdf7-4582-ba18-3fa5d03c0c00/cusstompublic',
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/5780df22-9624-4110-355b-ae69a3879000/cusstompublic',
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/ed3712bf-48ab-4d8b-6046-f0ea53300b00/cusstompublic',
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/7866ded2-d59f-4d8d-1278-ec5f0fd9b400/cusstompublic',
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/01c80b6c-27ae-44c8-9094-85862699dc00/cusstompublic',
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/fdc649fd-8ba7-42fa-92d0-f1fa388fb400/cusstompublic',
-
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/d6542f1d-cdf7-4582-ba18-3fa5d03c0c00/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/5780df22-9624-4110-355b-ae69a3879000/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/ed3712bf-48ab-4d8b-6046-f0ea53300b00/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/7866ded2-d59f-4d8d-1278-ec5f0fd9b400/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/01c80b6c-27ae-44c8-9094-85862699dc00/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/fdc649fd-8ba7-42fa-92d0-f1fa388fb400/cusstompublic",
     ],
     source_code_link: "https://github.com/Danieldo1/code3035",
     project_link: "https://code3035.vercel.app/",
+  },
+  {
+    name: "Reach Gold",
+    description:
+      "Embark on a colorful puzzle adventure in 'Reach Gold', a captivating tile-matching game that challenges your strategy and foresight. Swipe to combine tiles, watch them evolve through a vibrant spectrum, and aim for the ultimate golden hue. With each move, you'll progress from light blue to yellow, creating a cascade of colors that's as beautiful as it is challenging.Inspired by classical 2048 but with a modern twist and challenging aspects.",
+    tags: [
+      {
+        name: "Javascript",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "MongoDB",
+        color: "orange-text-gradient",
+      },
+      {
+        name: "Next.js",
+        color: "green-text-gradient",
+      },
+      {
+        name: "React",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "Tailwind CSS",
+        color: "purple-text-gradient",
+      },
+      {
+        name: "Framer Motion",
+        color: "custom-text-gradient",
+      },
+      {
+        name: "ShadCn",
+        color: "yellow-text-gradient",
+      },
+    ],
+    key_features: [
+      "Seamless gameplay across various device sizes and orientations",
+      "Utilizes Framer Motion for fluid, eye-catching tile movements and combinations",
+      "Implements React hooks for optimal performance and responsiveness",
+      "Features a robust API for handling high scores and user data",
+      "Designed with touch interfaces in mind, ensuring a great experience on smartphones and tablets",
+      "Play anytime, anywhere, even without an internet connection",
+    ],
+    technical_highlights: [
+      "Next.js: Providing server-side rendering and optimal performance",
+      "React.js: For building a dynamic and interactive user interface",
+      "Framer Motion: Powering smooth and attractive animations",
+      "Tailwind CSS: For responsive and customizable styling",
+      "MongoDB: Storing and managing high scores and user data",
+      "Vercel: For seamless deployment and hosting",
+    ],
+    images: [
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/fb1ae5a8-4ad5-44d8-f94a-76305b09e100/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/6391f2c6-7c75-42f9-472a-bb4ab7a4fa00/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/0fdb0811-3c03-4a8d-7396-f6173c728e00/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/7d12b42f-e334-48ad-5aee-922b44f84c00/cusstompublic",
+    ],
+    source_code_link: "https://reach-gold.vercel.app/",
+    project_link: "https://github.com/Danieldo1/reach-gold",
   },
   {
     name: "SurprizeUs",
@@ -400,10 +457,10 @@ const projectsData = [
       "OpenAI integration for some AI-powered game elements",
     ],
     images: [
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/ceee1287-03b0-4e5f-8f66-a9ec5c348900/cusstompublic',
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/483eab84-a0b4-4c10-c9b1-0728e17b2100/cusstompublic',
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/e30b3827-d866-4e1d-3260-a70aa1a8af00/cusstompublic',
-        'https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/18aa2699-209d-4e76-894e-2bf77b2aea00/cusstompublic'
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/ceee1287-03b0-4e5f-8f66-a9ec5c348900/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/483eab84-a0b4-4c10-c9b1-0728e17b2100/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/e30b3827-d866-4e1d-3260-a70aa1a8af00/cusstompublic",
+      "https://imagedelivery.net/qd-2dzkwRXgPkdXv6UsI3A/18aa2699-209d-4e76-894e-2bf77b2aea00/cusstompublic",
     ],
     source_code_link: "https://github.com/Danieldo1/surprize",
     project_link: "https://surprize.us",
@@ -411,22 +468,22 @@ const projectsData = [
 ];
 
 async function seedProjects() {
-    try {
-      await mongoose.connect(MONGODB_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      });
-  
-      await Project.deleteMany({});
-  
-      await Project.insertMany(projectsData);
-  
-      console.log('Projects seeded successfully');
-    } catch (error) {
-      console.error('Error seeding projects:', error);
-    } finally {
-      await mongoose.connection.close();
-    }
+  try {
+    await mongoose.connect(MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
+    await Project.deleteMany({});
+
+    await Project.insertMany(projectsData);
+
+    console.log("Projects seeded successfully");
+  } catch (error) {
+    console.error("Error seeding projects:", error);
+  } finally {
+    await mongoose.connection.close();
   }
+}
 
 seedProjects();
