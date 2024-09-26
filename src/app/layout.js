@@ -7,6 +7,7 @@ import CustomCursor from "@/components/CustomCursor";
 import toast, { Toaster } from 'react-hot-toast';
 import ogImage from "./opengraph-image.png";
 
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
