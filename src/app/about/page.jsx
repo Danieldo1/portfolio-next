@@ -35,17 +35,17 @@ const AboutPage = () => {
     },
     {
       category: "Backend",
-      items: ["Node", "MongoDB", "Prisma", "Strapi", "Supabase", "Convex"],
+      items: ["Node", "MongoDB", "Prisma", "Strapi", "Supabase", "Convex",'Strapi'],
       icon: Router,
     },
     {
       category: "Tools",
-      items: ["GitHub", "Docker", "VS Code", "Postman", "Vercel", "Figma"],
+      items: ["GitHub", "Docker", "VS Code", "Postman", "Vercel", "Figma","AWS"],
       icon: DraftingCompass,
     },
     {
       category: "Languages",
-      items: ["JavaScript", "TypeScript", "HTML", "CSS"],
+      items: ["JavaScript", "TypeScript", "HTML", "CSS","English","Russian"],
       icon: Languages,
     },
   ];

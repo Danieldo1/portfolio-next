@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import PageTransitionWrapper from "../PageTransitionWrapper";
 import AnimatedTitle from "@/components/AnimatedTitle";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 const services = [
   {
@@ -153,6 +154,10 @@ const ServiceCard = ({ service, index }) => {
 
   return (
     <motion.div
+    drag
+    dragConstraints={{ top: -125, right: 125, bottom:125, left: -125 }}
+    dragElastic={0.5}
+    dragTransition={{bounceStiffness: 600, bounceDamping: 20}}
       className={`${service.span} ${service.color} ${shadowColor} shadow-[0_0_10px]  p-6 rounded-2xl overflow-hidden relative cursor-help group`}
       variants={cardVariants}
       // onTapEnd={handleTapEnd}
@@ -199,8 +204,6 @@ const BentoBox = () => {
             ))}
           </div>
         </div>
-
-        {/* Top gradient */}
         <div className="absolute top-[4rem] left-0 right-0 h-16 bg-gradient-to-b from-pink-100 via-pink-100/20 to-transparent pointer-events-none z-10 md:hidden"></div>
       </div>
     </section>
