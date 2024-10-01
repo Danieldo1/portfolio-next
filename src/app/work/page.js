@@ -63,6 +63,10 @@ const ProjectPage = () => {
 
   const openProjectDetails = (project) => {
     setSelectedProject(project);
+    // Trigger Umami event
+    if (typeof window !== 'undefined' && window.umami) {
+      window.umami.track('Checked out project', { project: project.name });
+    }
   };
 
   const nextImage = () => {
@@ -166,7 +170,6 @@ const ProjectPage = () => {
                         <Drawer.Root>
                           <Drawer.Trigger asChild>
                             <CustomButton
-                              projectName={project?.name}
                               onClick={() => openProjectDetails(project)}
                             />
                           </Drawer.Trigger>
