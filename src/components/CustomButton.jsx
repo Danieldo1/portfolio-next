@@ -1,10 +1,12 @@
 import Link from "next/link";
 
 
-const CustomButton = ({ onClick }) => {
+const CustomButton = ({ onClick,projectName }) => {
   return (
     <button
-      onClick={onClick}
+    id={`Work: ${projectName}`}
+    data-umamui-event={`Checked out: ${projectName}`}
+    onClick={onClick}
       class="flex justify-start w-full gap-5 items-center mx-auto  text-lg bg-gray-50 backdrop-blur-md lg:font-semibold isolation-auto border-gray-300 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-accent hover:text-gray-50 before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-4 py-2 overflow-hidden border-[1px] border-b-4 rounded-md group"
     >
       Learn more

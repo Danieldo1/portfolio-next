@@ -22,6 +22,7 @@ const ProjectPage = () => {
   const intervalRef = useRef(null);
 
   useEffect(() => {
+    
     fetchProjects();
   }, []);
 
@@ -65,7 +66,10 @@ const ProjectPage = () => {
   };
 
   const nextImage = () => {
-    setImageIndex((prev) => (prev + 1) % projects[currentIndex].images.length);
+    if (!projects[currentIndex]?.images?.length) {
+      return;
+    }
+    setImageIndex((prev) => (prev + 1) % projects[currentIndex]?.images?.length);
   };
 
   const cardVariants = {
@@ -162,6 +166,7 @@ const ProjectPage = () => {
                         <Drawer.Root>
                           <Drawer.Trigger asChild>
                             <CustomButton
+                              projectName={project?.name}
                               onClick={() => openProjectDetails(project)}
                             />
                           </Drawer.Trigger>
